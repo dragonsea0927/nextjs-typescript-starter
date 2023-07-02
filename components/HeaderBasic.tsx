@@ -23,16 +23,16 @@ export default function HeaderBasic({
                         styles[className ?? '']
                     )}
                 >
-                    <div className='o-container--small'>
+                    <div className="o-container--small">
                         <div
                             className={classNames(
                                 'u-text--center',
                                 styles['c-headerBasic__row']
                             )}
                         >
-                            <h1 id='title'>{title}</h1>
+                            <h1 id="title">{title}</h1>
                             {wysiwyg && (
-                                <div className='o-wysiwyg'>
+                                <div className="o-wysiwyg">
                                     <p>{wysiwyg}</p>
                                 </div>
                             )}
