@@ -13,9 +13,8 @@ import { validateRecaptcha } from '@/utils/recaptcha';
  */
 export default async function handler(
     req: NextApiRequest,
-    res: NextApiResponse
+    res: NextApiResponse,
 ) {
-
     if (req.method !== 'POST') {
         res.setHeader('Allow', 'POST');
         return res.status(405).end('Method not allowed');
@@ -34,18 +33,30 @@ export default async function handler(
         if (validReCaptcha)
             /* Sends email */
             try {
-                const emailTemplate = await getEmailTemplateFile('/templates/email.html', res) as string;
+                const emailTemplate = (await getEmailTemplateFile(
+                    '/templates/email.html',
+                    res,
+                )) as string;
 
-                await new Email(emailTemplate, 'New form', labels, data, []).send();
+                await new Email(
+                    emailTemplate,
+                    'New form',
+                    labels,
+                    data,
+                    [],
+                ).send();
 
                 return res.status(201).json({
                     data,
-                    message: 'Thank you, your message has been sent successfully.'
+                    message:
+                        'Thank you, your message has been sent successfully.',
                 });
             } catch (err) {
-                return res.status(500).json({ data: null, message: 'An error occurred while sending the email' });
+                return res.status(500).json({
+                    data: null,
+                    message: 'An error occurred while sending the email',
+                });
             }
-
     } catch (err) {
         /* Yup validation */
         if (err instanceof ValidationError) {
@@ -56,9 +67,13 @@ export default async function handler(
                     validationErrors[error.path] = error.errors[0];
             });
 
-            return res.status(400).json({ data: null, errors: validationErrors });
+            return res
+                .status(400)
+                .json({ data: null, errors: validationErrors });
         }
         /* Global server error */
-        return res.status(500).json({ data: null, message: 'Internal Server Error' });
+        return res
+            .status(500)
+            .json({ data: null, message: 'Internal Server Error' });
     }
 }

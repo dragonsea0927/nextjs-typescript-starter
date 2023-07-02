@@ -5,6 +5,8 @@
     "scripts": {
         "dev": "next dev",
         "build": "next build",
+        "format:write": "prettier --write \"**/*.{css,js,json,jsx,ts,tsx}\"",
+        "format": "prettier \"**/*.{css,js,json,jsx,ts,tsx}\"",
         "start": "next start",
         "lint": "next lint"
     },

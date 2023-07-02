@@ -9,15 +9,21 @@ import { NextApiResponse } from 'next';
  * @param {Object} res server response object
  * @returns {boolean} true or false
  */
-export const validateRecaptcha = async (token: string, res: NextApiResponse): Promise<boolean> => {
+export const validateRecaptcha = async (
+    token: string,
+    res: NextApiResponse,
+): Promise<boolean> => {
     try {
-        const response = await fetch("https://www.google.com/recaptcha/api/siteverify", {
-            method: 'POST',
-            headers: {
-                'Content-Type': 'application/x-www-form-urlencoded',
+        const response = await fetch(
+            'https://www.google.com/recaptcha/api/siteverify',
+            {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/x-www-form-urlencoded',
+                },
+                body: `secret=${process.env.RECAPTCHA_SECRET_KEY}&response=${token}`,
             },
-            body: `secret=${process.env.RECAPTCHA_SECRET_KEY}&response=${token}`,
-        });
+        );
 
         const result = await response.json();
 
@@ -27,7 +33,9 @@ export const validateRecaptcha = async (token: string, res: NextApiResponse): Pr
             }
             throw new Error(`ReCaptcha validation failed`);
         }
-        throw new Error(`Error validating captcha: ${result['error-codes'][0]}`);
+        throw new Error(
+            `Error validating captcha: ${result['error-codes'][0]}`,
+        );
 
         // eslint-disable-next-line @typescript-eslint/no-explicit-any
     } catch (err: any) {
