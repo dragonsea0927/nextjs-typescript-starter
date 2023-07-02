@@ -27,7 +27,7 @@ const NavigationContext = createContext<NavigationContextType>({
     open: false,
     sticky: false,
     hidden: false,
-    toggle: () => {},
+    toggle: () => null,
 });
 
 export function NavigationContextProvider({
@@ -53,6 +53,7 @@ export function NavigationContextProvider({
             setOpen(false);
             setLocked(false);
         }
+        // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [isDesktop]);
 
     /* Closes navigation on route change */
@@ -61,6 +62,7 @@ export function NavigationContextProvider({
             setOpen(false);
             setLocked(false);
         }
+        // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [router.asPath]);
 
     const contextValue: NavigationContextType = {
