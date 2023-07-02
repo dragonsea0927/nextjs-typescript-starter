@@ -15,35 +15,25 @@ $scr-xxlg: 1650px;
 $scr-max: 1920px;
 
 $breakpoints: (
-	XXS: $scr-xxs,
-	XS: $scr-xs,
-	SM: $scr-sm,
-	MD: $scr-md,
-	LG: $scr-lg,
-	XLG: $scr-xlg,
-	XXLG: $scr-xxlg,
-	// MAX: $scr-max
+    XXS: $scr-xxs,
+    XS: $scr-xs,
+    SM: $scr-sm,
+    MD: $scr-md,
+    LG: $scr-lg,
+    XLG: $scr-xlg,
+    XXLG: $scr-xxlg,
+    // MAX: $scr-max
 ) !default;
 
 /* Sizes
 ========================================================================== */
 
-$list-size: (
-	'thinner',
-	'thin',
-	'normal',
-	'large',
-	'larger',
-) !default;
+$list-size: ('thinner', 'thin', 'normal', 'large', 'larger') !default;
 
 /* Text align
 ========================================================================== */
 
-$list-text-align: (
-	center,
-	left,
-	right
-) !default;
+$list-text-align: (center, left, right) !default;
 
 /* Grid
 ========================================================================== */

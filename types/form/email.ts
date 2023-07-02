@@ -22,7 +22,7 @@ export type MailFrom = {
 
 export type MailTemplate = {
     html: string;
-}
+};
 
 export type Attachment = {
     content: string;
@@ -30,4 +30,4 @@ export type Attachment = {
     type?: string;
     disposition?: string;
     contentId?: string;
-}
+};

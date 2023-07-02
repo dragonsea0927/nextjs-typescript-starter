@@ -11,7 +11,7 @@ export default function useIsMounted() {
         return () => {
             /* Unmounted */
             isMounted.current = false;
-        }
+        };
     }, []); /* Empty array ensures that effect is only run on mount */
 
     /* return function that checks mounted status */

@@ -5,7 +5,7 @@
 .c-formElement {
     @include default-styles();
 
-	/* Submit Button
+    /* Submit Button
     ========================================================================== */
 
     @keyframes spin {
@@ -29,11 +29,11 @@
         }
     }
 
-	&--submit {
-		[type="submit"] {
+    &--submit {
+        [type='submit'] {
             display: inline-flex;
             align-items: center;
-            opacity: .5;
+            opacity: 0.5;
             pointer-events: none;
 
             svg {
@@ -50,16 +50,17 @@
                     animation: dash 2.5s ease-in-out infinite;
                 }
             }
-		}
-	}
+        }
+    }
 }
 
 /* Label
 ========================================================================== */
 
-label, .c-label {
-	display: block;
-	margin-bottom: var(--margin-thinner);
+label,
+.c-label {
+    display: block;
+    margin-bottom: var(--margin-thinner);
 }
 
 /* Toastify

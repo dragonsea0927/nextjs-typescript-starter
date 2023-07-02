@@ -8,11 +8,11 @@ import { NextApiResponse } from 'next';
  */
 export const getEmailTemplateFile = async (
     path: string,
-    res: NextApiResponse
+    res: NextApiResponse,
 ): Promise<string | void> => {
     try {
         const response = await fetch(
-            `${process.env.NEXT_PUBLIC_BASE_URL}${path}`
+            `${process.env.NEXT_PUBLIC_BASE_URL}${path}`,
         );
         if (!response.ok) throw new Error('Email template not found');
         return response.text();

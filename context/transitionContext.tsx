@@ -5,7 +5,7 @@ import {
     useContext,
     ReactNode,
     Dispatch,
-    SetStateAction
+    SetStateAction,
 } from 'react';
 
 interface TransitionContextType {
@@ -17,17 +17,15 @@ interface TransitionContextType {
 const TransitionContext = createContext<TransitionContextType>({
     timeline: null,
     setTimeline: () => {},
-    resetTimeline: () => {}
+    resetTimeline: () => {},
 });
 
 export function TransitionContextProvider({
-    children
+    children,
 }: {
-    children: ReactNode
+    children: ReactNode;
 }) {
-    const [timeline, setTimeline] = useState(
-        gsap.timeline({ paused: true })
-    );
+    const [timeline, setTimeline] = useState(gsap.timeline({ paused: true }));
 
     const resetTimeline = () => {
         timeline.pause().clear();
@@ -36,13 +34,11 @@ export function TransitionContextProvider({
     const contextValue: TransitionContextType = {
         timeline,
         setTimeline,
-        resetTimeline
+        resetTimeline,
     };
 
     return (
-        <TransitionContext.Provider
-            value={contextValue}
-        >
+        <TransitionContext.Provider value={contextValue}>
             {children}
         </TransitionContext.Provider>
     );

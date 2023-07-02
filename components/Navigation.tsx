@@ -19,14 +19,11 @@ export default function Navigation() {
                 }
             `}</style>
             <header
-                className={classNames(
-                    styles['c-navigation'],
-                    {
-                        [styles['is-sticky']]: sticky,
-                        [styles['is-hidden']]: hidden,
-                        [styles['is-open']]: open
-                    }
-                )}
+                className={classNames(styles['c-navigation'], {
+                    [styles['is-sticky']]: sticky,
+                    [styles['is-hidden']]: hidden,
+                    [styles['is-open']]: open,
+                })}
                 ref={(el: HTMLDivElement) => {
                     navigationRef(el);
                     setRef(el);
@@ -41,14 +38,24 @@ export default function Navigation() {
                         </div>
                         <MobileNavigation />
                         <nav className={styles['c-navigation__nav']}>
-                            <div className={styles['c-navigation__nav__primary']}>
-                                <div className={styles['c-navigation__nav__primary--list']}>
+                            <div
+                                className={styles['c-navigation__nav__primary']}
+                            >
+                                <div
+                                    className={
+                                        styles[
+                                            'c-navigation__nav__primary--list'
+                                        ]
+                                    }
+                                >
                                     <ul>
                                         <li>
                                             <NavItem
                                                 href="/form"
                                                 title="Form"
-                                                className={styles['is-current-page']}
+                                                className={
+                                                    styles['is-current-page']
+                                                }
                                             />
                                         </li>
                                     </ul>

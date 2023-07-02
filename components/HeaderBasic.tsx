@@ -20,14 +20,14 @@ export default function HeaderBasic({
                 <section
                     className={classNames(
                         styles['c-headerBasic'],
-                        styles[className ?? '']
+                        styles[className ?? ''],
                     )}
                 >
                     <div className="o-container--small">
                         <div
                             className={classNames(
                                 'u-text--center',
-                                styles['c-headerBasic__row']
+                                styles['c-headerBasic__row'],
                             )}
                         >
                             <h1 id="title">{title}</h1>

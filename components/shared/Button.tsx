@@ -13,7 +13,7 @@ export default function Button({
     onClick,
     disabled,
     className,
-    wrapperClassName
+    wrapperClassName,
 }: ButtonProps) {
     if (label && href) {
         return (
@@ -29,7 +29,7 @@ export default function Button({
         );
     }
 
-    if (label && (isExternal && externalHref || anchor)) {
+    if (label && ((isExternal && externalHref) || anchor)) {
         return (
             <div className={wrapperClassName}>
                 <a

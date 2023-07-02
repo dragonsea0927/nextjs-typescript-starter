@@ -6,10 +6,9 @@ interface Size {
     height: number;
 }
 
-export default function useElementSize<T extends HTMLElement = HTMLDivElement>(): [
-    (node: T | null) => void,
-    Size
-] {
+export default function useElementSize<
+    T extends HTMLElement = HTMLDivElement,
+>(): [(node: T | null) => void, Size] {
     /**
      * Mutable values like 'ref.current' aren't valid dependencies
      * because mutating them doesn't re-render the component.
@@ -25,9 +24,12 @@ export default function useElementSize<T extends HTMLElement = HTMLDivElement>()
     const handleSize = useCallback(() => {
         setSize({
             width: ref?.getBoundingClientRect().width || 0,
-            height: ref?.getBoundingClientRect().height || 0
-        })
-    }, [ref?.getBoundingClientRect().height, ref?.getBoundingClientRect().width]);
+            height: ref?.getBoundingClientRect().height || 0,
+        });
+    }, [
+        ref?.getBoundingClientRect().height,
+        ref?.getBoundingClientRect().width,
+    ]);
 
     useIsomorphicLayoutEffect(() => {
         /* Add event listener */

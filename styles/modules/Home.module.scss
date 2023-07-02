@@ -88,12 +88,12 @@
             border-radius: var(--border-radius);
             background: rgba(var(--card-rgb), 0);
             border: 1px solid rgba(var(--card-border-rgb), 0);
-            transition: background .2s, border .2s $ease-in;
+            transition: background 0.2s, border 0.2s $ease-in;
             font-weight: inherit;
 
             span {
                 display: inline-block;
-                transition: transform .2s $ease-in;
+                transition: transform 0.2s $ease-in;
             }
 
             h2 {

@@ -41,4 +41,10 @@
     }
 }
 
-@include mq-export(if(variable-exists('im-export-element'), $im-export-element + '::after', 'body::after'));
+@include mq-export(
+    if(
+        variable-exists('im-export-element'),
+        $im-export-element + '::after',
+        'body::after'
+    )
+);

@@ -4,7 +4,7 @@ import useIsomorphicLayoutEffect from './useIsomorphicLayoutEffect';
 type UseLockedScrollOutput = [boolean, (locked: boolean) => void];
 
 export default function useLockedScroll(
-    initialLocked = false
+    initialLocked = false,
 ): UseLockedScrollOutput {
     // const { ref } = useNavigationContext();
     const [locked, setLocked] = useState(initialLocked);
@@ -18,7 +18,7 @@ export default function useLockedScroll(
         /* Save initial window offset width & body style */
         const originalDocumentWidth = document.documentElement.offsetWidth;
         const originalOverflow = document.body.style.overflow;
-        const originalPaddingRight = document.body.style.paddingRight
+        const originalPaddingRight = document.body.style.paddingRight;
         const originalHeight = document.body.style.height;
 
         /* Lock body scroll */
@@ -49,7 +49,7 @@ export default function useLockedScroll(
             if (scrollBarWidth) {
                 document.body.style.paddingRight = originalPaddingRight;
             }
-        }
+        };
     }, [locked]);
 
     /* Update state if initialLocked changes */

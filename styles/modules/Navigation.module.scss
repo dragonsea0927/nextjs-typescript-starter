@@ -5,7 +5,7 @@
 .c-navigation {
     --navigation-bg: transparent;
     --navigation-sticky-bg: rgba(0, 0, 0, 0.5);
-    --navigation-box-shadow: inset 0 -1px 0 0 hsla(0,0%,100%,.1);
+    --navigation-box-shadow: inset 0 -1px 0 0 hsla(0, 0%, 100%, 0.1);
     --navigation-mobile-bg-color: var(--primary);
     --navigation-link-color: var(--white);
     --navigation-link-current-color: var(--secondary);
@@ -19,7 +19,7 @@
     padding: var(--navigation-padding) 0;
     background: var(--navigation-bg);
     box-shadow: none;
-    transition: all .35s, right 0s $ease-in 0s;
+    transition: all 0.35s, right 0s $ease-in 0s;
 
     &:before {
         content: '';
@@ -30,7 +30,7 @@
         height: 100%;
         background: var(--navigation-mobile-bg-color);
         clip-path: circle(0px at top right);
-        transition: all .35s $ease-in;
+        transition: all 0.35s $ease-in;
         pointer-events: none;
     }
 
@@ -75,7 +75,6 @@
 
     /* mobile */
     @include mediaq('<LG') {
-
         &__logo {
             order: 1;
         }
@@ -86,7 +85,6 @@
 
         /* states */
         &.is-open {
-
             &:before {
                 height: 100vh;
                 clip-path: circle(150% at top right);
@@ -127,12 +125,18 @@
                                     color: var(--navigation-link-color);
                                     text-transform: uppercase;
 
-                                    &:hover, &:active, &:focus {
-                                        --navigation-link-color: var(--secondary);
+                                    &:hover,
+                                    &:active,
+                                    &:focus {
+                                        --navigation-link-color: var(
+                                            --secondary
+                                        );
                                     }
 
                                     &.is-current-page {
-                                        --navigation-link-color: var(--navigation-link-current-color);
+                                        --navigation-link-color: var(
+                                            --navigation-link-current-color
+                                        );
                                     }
                                 }
                             }

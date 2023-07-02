@@ -15,8 +15,8 @@ const nextConfig = {
             'styles/tools/mixins/_typography.scss',
             'styles/tools/_functions.scss',
             'styles/objects/_mediaq.scss';
-        `
-    }
-}
+        `,
+    },
+};
 
 module.exports = nextConfig;

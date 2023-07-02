@@ -6,12 +6,12 @@ export default function NavItem({
     href,
     title,
     onClick,
-    className
+    className,
 }: {
     href: string;
     title: string;
     onClick?: () => void;
-    className: string
+    className: string;
 }) {
     const router = useRouter();
     const isActive = router.asPath === href;
@@ -21,7 +21,7 @@ export default function NavItem({
             <Link
                 href={href}
                 className={classNames({
-                    [className]: isActive
+                    [className]: isActive,
                 })}
                 onClick={onClick}
             >

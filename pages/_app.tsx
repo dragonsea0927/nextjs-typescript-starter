@@ -12,7 +12,7 @@ import { Inter } from 'next/font/google';
 
 const inter = Inter({
     subsets: ['latin'],
-    display: 'swap'
+    display: 'swap',
 });
 
 gsap.registerPlugin(ScrollTrigger);
@@ -22,7 +22,8 @@ export default function App({ Component, pageProps }: AppProps) {
 
     /* Removes focus from next/link element after page change */
     useEffect(() => {
-        document.activeElement instanceof HTMLElement && document.activeElement.blur();
+        document.activeElement instanceof HTMLElement &&
+            document.activeElement.blur();
     }, [router]);
 
     return (
@@ -32,20 +33,18 @@ export default function App({ Component, pageProps }: AppProps) {
                 scriptProps={{
                     async: true,
                     defer: true,
-                    appendTo: 'body'
+                    appendTo: 'body',
                 }}
             >
                 <TransitionContextProvider>
                     <NavigationContextProvider>
                         <style jsx global>
-                            {
-                                `
-                                    :root {
-                                        --font-primary: ${inter.style.fontFamily};
-                                        --font-secondary: ${inter.style.fontFamily};
-                                    }
-                                `
-                            }
+                            {`
+                                :root {
+                                    --font-primary: ${inter.style.fontFamily};
+                                    --font-secondary: ${inter.style.fontFamily};
+                                }
+                            `}
                         </style>
                         <Layout>
                             <Component {...pageProps} />

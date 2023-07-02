@@ -28,10 +28,9 @@
         position: relative;
         padding: var(--navigation-primary-padding) 0 0 0;
         opacity: 0;
-        transition: opacity .2s $ease-in;
+        transition: opacity 0.2s $ease-in;
 
         &--list {
-
             ul {
                 margin: 0;
                 padding: 0;
@@ -58,7 +57,6 @@
                             }
                         }
                     }
-
                 }
             }
         }
@@ -75,7 +73,7 @@
 
         &__primary {
             opacity: 1;
-            transition: opacity .35s $ease-in;
+            transition: opacity 0.35s $ease-in;
         }
     }
 
@@ -103,7 +101,7 @@
         width: 33px;
         height: 33px;
         transform: translate(-50%, -50%);
-        transition: all .35s $ease-in;
+        transition: all 0.35s $ease-in;
 
         span {
             position: absolute;
@@ -114,9 +112,10 @@
             height: 2px;
             background: var(--body-text-color);
             transition-timing-function: $ease-in;
-            transition-duration: .3s;
+            transition-duration: 0.3s;
 
-            &:before, &:after {
+            &:before,
+            &:after {
                 content: '';
                 display: block;
                 position: absolute;
@@ -125,36 +124,35 @@
                 width: 100%;
                 height: 2px;
                 background: var(--body-text-color);
-                transition: top .1s $ease-in .25s, opacity .1s $ease-in;
+                transition: top 0.1s $ease-in 0.25s, opacity 0.1s $ease-in;
             }
 
             &:after {
                 top: auto;
                 bottom: -10px;
-                transition: bottom .1s $ease-in .25s, transform .3s $ease-in;
+                transition: bottom 0.1s $ease-in 0.25s, transform 0.3s $ease-in;
             }
         }
     }
 
     /* states */
     &.is-nav-active & {
-
         &__lines {
-
             span {
-                transition-delay: .3s;
+                transition-delay: 0.3s;
                 transition-timing-function: $ease-in;
                 transform: rotate(225deg);
 
                 &:before {
                     top: 0;
-                    transition: top .1s $ease-in, opacity .1s $ease-in .12s;
+                    transition: top 0.1s $ease-in, opacity 0.1s $ease-in 0.12s;
                     opacity: 0;
                 }
 
                 &:after {
                     bottom: 0;
-                    transition: bottom .1s $ease-in, transform .22s $ease-in .15s;
+                    transition: bottom 0.1s $ease-in,
+                        transform 0.22s $ease-in 0.15s;
                     transform: rotate(-90deg);
                 }
             }

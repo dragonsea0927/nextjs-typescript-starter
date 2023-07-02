@@ -22,7 +22,7 @@ export default function ScaleInOut({
     start = 'top bottom',
     end = 'bottom top',
     scrub = false,
-    markers
+    markers,
 }: Scale) {
     return (
         <AnimateInOut
@@ -33,7 +33,7 @@ export default function ScaleInOut({
             easeOut={easeOut}
             from={{
                 opacity: fade ? 0 : 1,
-                transform: `translate(${x}, ${y}) scale(${scale})`
+                transform: `translate(${x}, ${y}) scale(${scale})`,
             }}
             to={{
                 ease,
@@ -41,7 +41,7 @@ export default function ScaleInOut({
                 scale: scaleTo,
                 x: xTo,
                 y: yTo,
-                transformOrigin
+                transformOrigin,
             }}
             skipOutro={skipOutro}
             watch={watch}
@@ -53,4 +53,4 @@ export default function ScaleInOut({
             {children}
         </AnimateInOut>
     );
-};
+}

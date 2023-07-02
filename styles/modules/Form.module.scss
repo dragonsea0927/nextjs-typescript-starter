@@ -3,7 +3,6 @@
 ========================================================================== */
 
 .c-form {
-
     &__inner {
         max-width: 1000px;
         margin: 0 auto;
@@ -18,7 +17,6 @@
     // MEDIA QUERIES
 
     @include mediaq('>SM') {
-
         &__row {
             display: grid;
             gap: 0 35px;

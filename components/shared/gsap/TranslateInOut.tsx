@@ -20,7 +20,7 @@ export default function TranslateInOut({
     start = 'top bottom',
     end = 'bottom top',
     scrub = false,
-    markers
+    markers,
 }: Translate) {
     return (
         <AnimateInOut
@@ -31,14 +31,14 @@ export default function TranslateInOut({
             easeOut={easeOut}
             from={{
                 opacity: fade ? 0 : 1,
-                transform: `translate(${x}, ${y})`
+                transform: `translate(${x}, ${y})`,
             }}
             to={{
                 ease,
                 opacity: 1,
                 x: xTo,
                 y: yTo,
-                transformOrigin
+                transformOrigin,
             }}
             skipOutro={skipOutro}
             watch={watch}

@@ -12,4 +12,4 @@ export type AnimationProperties = {
     end?: string;
     scrub?: boolean;
     markers?: boolean;
-}
+};

@@ -8,10 +8,10 @@
 ========================================================================== */
 
 @mixin make-row() {
-	display: flex;
-	flex-wrap: wrap;
-	margin-right: calc(-1 * var(--grid-gutter-width));
-	margin-left: calc(-1 * var(--grid-gutter-width));
+    display: flex;
+    flex-wrap: wrap;
+    margin-right: calc(-1 * var(--grid-gutter-width));
+    margin-left: calc(-1 * var(--grid-gutter-width));
 }
 
 /*
@@ -21,10 +21,10 @@
  * 1. Prevent collapsing
  */
 @mixin make-col-ready() {
-	width: 100%;
-	min-height: 1px; // 1
-	padding-right: var(--grid-gutter-width);
-	padding-left: var(--grid-gutter-width);
+    width: 100%;
+    min-height: 1px; // 1
+    padding-right: var(--grid-gutter-width);
+    padding-left: var(--grid-gutter-width);
 }
 
 /*
@@ -33,6 +33,6 @@
  * do not appear to require this.
  */
 @mixin make-col($size, $columns: $grid-columns) {
-	flex: 0 0 percentage(math.div($size, $columns));
-	max-width: percentage(math.div($size, $columns));
+    flex: 0 0 percentage(math.div($size, $columns));
+    max-width: percentage(math.div($size, $columns));
 }

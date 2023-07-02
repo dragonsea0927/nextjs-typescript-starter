@@ -17,7 +17,7 @@ export type Animation = {
     end: string;
     scrub: boolean;
     markers: boolean | undefined;
-}
+};
 
 /* Animations */
 export type Fade = {

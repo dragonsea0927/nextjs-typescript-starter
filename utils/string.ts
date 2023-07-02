@@ -16,16 +16,16 @@
  */
 export const slugify = (string: string): string => {
     return string
-    .normalize('NFKD')
-    .replace( /[\u0300-\u036f]/g, '' )
-    .toLowerCase()
-    .trim()
-    .replace(/\s+/g, '-')
-    .replace(/[^\w\-]+/g, '')
-    .replace(/\_/g,'-')
-    .replace(/\-\-+/g, '-')
-    .replace(/\-$/g, '');
-}
+        .normalize('NFKD')
+        .replace(/[\u0300-\u036f]/g, '')
+        .toLowerCase()
+        .trim()
+        .replace(/\s+/g, '-')
+        .replace(/[^\w\-]+/g, '')
+        .replace(/\_/g, '-')
+        .replace(/\-\-+/g, '-')
+        .replace(/\-$/g, '');
+};
 
 /**
  * Converts first letter to uppercase
@@ -34,4 +34,4 @@ export const slugify = (string: string): string => {
  */
 export const capitalizeFirstLetter = (string: string): string => {
     return string.charAt(0).toUpperCase() + string.slice(1);
-}
+};

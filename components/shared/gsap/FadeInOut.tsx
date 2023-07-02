@@ -14,7 +14,7 @@ export default function FadeInOut({
     start = 'top bottom',
     end = 'bottom top',
     scrub = false,
-    markers
+    markers,
 }: Fade) {
     return (
         <AnimateInOut
@@ -24,11 +24,11 @@ export default function FadeInOut({
             delayOut={delayOut}
             easeOut={easeOut}
             from={{
-                opacity: 0
+                opacity: 0,
             }}
             to={{
                 ease,
-                opacity: 1
+                opacity: 1,
             }}
             skipOutro={skipOutro}
             watch={watch}

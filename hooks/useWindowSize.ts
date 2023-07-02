@@ -16,14 +16,14 @@ export default function useWindowSize(): WindowSize {
     /* Initialize state with undefined width/height so server and client renders match */
     const [windowSize, setWindowSize] = useState<Size>({
         width: undefined,
-        height: undefined
+        height: undefined,
     });
 
     /* Handler to call on window resize */
     const handleResize = () => {
         setWindowSize({
             width: window.innerWidth,
-            height: window.innerHeight
+            height: window.innerHeight,
         });
     };
 
@@ -40,7 +40,9 @@ export default function useWindowSize(): WindowSize {
 
     return {
         windowSize,
-        isMobile: typeof windowSize?.width === 'number' && windowSize?.width < 1200,
-        isDesktop: typeof windowSize?.width === 'number' && windowSize?.width >= 1200
+        isMobile:
+            typeof windowSize?.width === 'number' && windowSize?.width < 1200,
+        isDesktop:
+            typeof windowSize?.width === 'number' && windowSize?.width >= 1200,
     };
 }

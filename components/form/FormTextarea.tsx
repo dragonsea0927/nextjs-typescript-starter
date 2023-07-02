@@ -6,14 +6,14 @@ export default function FormTextarea({
     htmlFor,
     label,
     id,
-    placeholder=" ",
+    placeholder = ' ',
     required,
     className,
     wrapperClassName,
     register,
-    errors
+    errors,
 }: Textarea) {
-    return(
+    return (
         <div className={wrapperClassName}>
             <div
                 className={classNames(
@@ -21,8 +21,8 @@ export default function FormTextarea({
                     styles[className],
                     {
                         [styles['c-floatingLabel']]: label,
-                        [styles['has-error']]: errors?.message
-                    }
+                        [styles['has-error']]: errors?.message,
+                    },
                 )}
             >
                 <textarea
@@ -31,14 +31,17 @@ export default function FormTextarea({
                     required={required}
                     {...register}
                 />
-                {label && htmlFor &&
-                    <label htmlFor={htmlFor}>{label}{required && ' *'}</label>
-                }
+                {label && htmlFor && (
+                    <label htmlFor={htmlFor}>
+                        {label}
+                        {required && ' *'}
+                    </label>
+                )}
                 <span className={styles['c-formElement--focusLine']} />
             </div>
-            {errors?.message &&
+            {errors?.message && (
                 <label htmlFor={htmlFor}>{errors?.message}</label>
-            }
+            )}
         </div>
     );
 }

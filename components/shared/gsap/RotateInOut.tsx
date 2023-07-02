@@ -26,7 +26,7 @@ export default function RotateInOut({
     start = 'top bottom',
     end = 'bottom top',
     scrub = false,
-    markers
+    markers,
 }: Rotate) {
     return (
         <AnimateInOut
@@ -37,7 +37,7 @@ export default function RotateInOut({
             easeOut={easeOut}
             from={{
                 opacity: fade ? 0 : 1,
-                transform: `translate(${x}, ${y}) rotate(${rotate}deg) rotateX(${rotateX}deg) rotateY(${rotateY}deg)`
+                transform: `translate(${x}, ${y}) rotate(${rotate}deg) rotateX(${rotateX}deg) rotateY(${rotateY}deg)`,
             }}
             to={{
                 ease,
@@ -47,7 +47,7 @@ export default function RotateInOut({
                 rotateY: rotateYTo,
                 x: xTo,
                 y: yTo,
-                transformOrigin
+                transformOrigin,
             }}
             skipOutro={skipOutro}
             watch={watch}
@@ -59,4 +59,4 @@ export default function RotateInOut({
             {children}
         </AnimateInOut>
     );
-};
+}

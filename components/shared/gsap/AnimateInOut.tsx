@@ -18,30 +18,31 @@ function AnimateInOut({
     start,
     end,
     scrub,
-    markers
+    markers,
 }: Animation) {
     const { timeline } = useTransitionContext();
     const element = useRef<HTMLDivElement>(null);
 
     useIsomorphicLayoutEffect(() => {
-        const scrollTrigger = watch ? {
-            scrollTrigger: {
-                trigger: element.current,
-                start,
-                end,
-                scrub,
-                markers: markers
-            }
-        } : {};
+        const scrollTrigger = watch
+            ? {
+                  scrollTrigger: {
+                      trigger: element.current,
+                      start,
+                      end,
+                      scrub,
+                      markers: markers,
+                  },
+              }
+            : {};
 
         const ctx = gsap.context(() => {
-
             /* Intro animation */
             gsap.to(element.current, {
                 ...to,
                 delay,
                 duration: durationIn,
-                ...scrollTrigger
+                ...scrollTrigger,
             });
 
             /* Outro animation */
@@ -51,9 +52,9 @@ function AnimateInOut({
                         ease: easeOut,
                         ...from,
                         delay: delayOut,
-                        duration: durationOut
+                        duration: durationOut,
                     }),
-                    0
+                    0,
                 );
             }
         }, element);
@@ -64,7 +65,7 @@ function AnimateInOut({
         <div ref={element} style={from}>
             {children}
         </div>
-    )
+    );
 }
 
 export default React.memo(AnimateInOut);

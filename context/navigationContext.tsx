@@ -5,7 +5,7 @@ import {
     createContext,
     useContext,
     useEffect,
-    useState
+    useState,
 } from 'react';
 import { useRouter } from 'next/router';
 import useScrollbar from '@/hooks/useScrollbar';
@@ -27,13 +27,13 @@ const NavigationContext = createContext<NavigationContextType>({
     open: false,
     sticky: false,
     hidden: false,
-    toggle: () => {}
+    toggle: () => {},
 });
 
 export function NavigationContextProvider({
-    children
+    children,
 }: {
-    children: ReactNode
+    children: ReactNode;
 }) {
     const [ref, setRef] = useState<HTMLElement | null>(null);
     const [open, setOpen] = useState(false);
@@ -68,18 +68,19 @@ export function NavigationContextProvider({
         setRef,
         open,
         sticky: scrollY > 0,
-        hidden: directionY > 0 && typeof windowSize.height === 'number' && scrollY > windowSize.height,
-        toggle
+        hidden:
+            directionY > 0 &&
+            typeof windowSize.height === 'number' &&
+            scrollY > windowSize.height,
+        toggle,
     };
 
     return (
-        <NavigationContext.Provider
-            value={contextValue}
-        >
+        <NavigationContext.Provider value={contextValue}>
             {children}
         </NavigationContext.Provider>
     );
-};
+}
 
 export default function useNavigationContext(): NavigationContextType {
     return useContext(NavigationContext);

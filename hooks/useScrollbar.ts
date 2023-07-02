@@ -13,7 +13,7 @@ export default function useScrollbar(): Scrollbar {
         scrollY: 0,
         scrollX: 0,
         directionY: -1,
-        directionX: -1
+        directionX: -1,
     });
 
     const updateScrollbar = useCallback(() => {
@@ -25,10 +25,15 @@ export default function useScrollbar(): Scrollbar {
                 scrollY: window.scrollY,
                 scrollX: window.scrollX,
                 directionY: prevScrollY < window.scrollY ? 1 : -1,
-                directionX: prevScrollX < window.scrollX ? 1 : -1
-            }
-        })
-    }, [scrollbar?.scrollY, scrollbar?.scrollX, scrollbar?.directionY, scrollbar?.directionX]);
+                directionX: prevScrollX < window.scrollX ? 1 : -1,
+            };
+        });
+    }, [
+        scrollbar?.scrollY,
+        scrollbar?.scrollX,
+        scrollbar?.directionY,
+        scrollbar?.directionX,
+    ]);
 
     useIsomorphicLayoutEffect(() => {
         /* Add event listener */

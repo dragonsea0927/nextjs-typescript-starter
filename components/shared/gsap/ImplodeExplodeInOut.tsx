@@ -24,27 +24,29 @@ export default function ImplodeExplodeInOut({
     start = 'top bottom',
     end = 'bottom top',
     scrub = false,
-    markers
+    markers,
 }: ImplodeExplode) {
     const { timeline } = useTransitionContext();
     const element = useRef<HTMLDivElement>(null);
 
     useIsomorphicLayoutEffect(() => {
-        const scrollTrigger = watch ? {
-            scrollTrigger: {
-                trigger: element.current,
-                start,
-                end,
-                scrub,
-                markers: markers
-            }
-        } : {};
+        const scrollTrigger = watch
+            ? {
+                  scrollTrigger: {
+                      trigger: element.current,
+                      start,
+                      end,
+                      scrub,
+                      markers: markers,
+                  },
+              }
+            : {};
 
         const ctx = gsap.context(() => {
             const splitText = new SplitText(target);
             const chars = splitText.chars;
 
-            chars.forEach(char => {
+            chars.forEach((char) => {
                 /* Intro animation */
                 gsap.fromTo(
                     char,
@@ -56,7 +58,7 @@ export default function ImplodeExplodeInOut({
                         rotationX: randomNumber(-360, 360),
                         rotationY: randomNumber(-360, 360),
                         opacity: 0,
-                        ease
+                        ease,
                     },
                     {
                         x: 0,
@@ -69,37 +71,33 @@ export default function ImplodeExplodeInOut({
                         ease,
                         delay,
                         duration: durationIn,
-                        ...scrollTrigger
-                    }
+                        ...scrollTrigger,
+                    },
                 );
 
                 /* Outro animation */
                 if (!skipOutro) {
                     timeline?.add(
-                        gsap.to(
-                            char,
-                            {
-                                x: randomNumber(-2000, 2000),
-                                y: randomNumber(-1000, 1000),
-                                z: randomNumber(100, 100),
-                                rotation: randomNumber(360, 720),
-                                rotationX: randomNumber(-360, 360),
-                                rotationY: randomNumber(-360, 360),
-                                opacity: 0,
-                                ease: easeOut,
-                                delay: delayOut,
-                                duration: durationOut
-                            }
-                        ),
-                        0
+                        gsap.to(char, {
+                            x: randomNumber(-2000, 2000),
+                            y: randomNumber(-1000, 1000),
+                            z: randomNumber(100, 100),
+                            rotation: randomNumber(360, 720),
+                            rotationX: randomNumber(-360, 360),
+                            rotationY: randomNumber(-360, 360),
+                            opacity: 0,
+                            ease: easeOut,
+                            delay: delayOut,
+                            duration: durationOut,
+                        }),
+                        0,
                     );
                 }
             });
 
             gsap.to(element.current, {
-                opacity: 1
+                opacity: 1,
             });
-
         }, element);
         return () => ctx.revert();
     }, []);

@@ -4,40 +4,44 @@
 
 .c-formElement {
     @include default-styles();
-	@include input-placeholder(inherit, inherit, var(--gray-500));
+    @include input-placeholder(inherit, inherit, var(--gray-500));
     @include floating-label();
 
-    &--boxed, &--bordered, &--line {
-		textarea {
-			background: none;
-			border: none;
-			font-size: var(--font-base);
+    &--boxed,
+    &--bordered,
+    &--line {
+        textarea {
+            background: none;
+            border: none;
+            font-size: var(--font-base);
             color: var(--body-text-color);
-			height: auto;
-			max-width: 100%;
-			outline: none;
-			width: 100%;
-		}
-	}
+            height: auto;
+            max-width: 100%;
+            outline: none;
+            width: 100%;
+        }
+    }
 
-	&--boxed, &--bordered {
-		textarea {
-			padding: var(--form-element-padding);
-			min-height: 180px;
-		}
+    &--boxed,
+    &--bordered {
+        textarea {
+            padding: var(--form-element-padding);
+            min-height: 180px;
+        }
 
-		/* Colored line on focus */
-		textarea:focus ~ .c-formElement--focusLine {
-			border-color: var(--form-element-color);
-		}
+        /* Colored line on focus */
+        textarea:focus ~ .c-formElement--focusLine {
+            border-color: var(--form-element-color);
+        }
 
         /* Floating label */
-        textarea:focus ~ label, :not(:placeholder-shown) ~ label {
+        textarea:focus ~ label,
+        :not(:placeholder-shown) ~ label {
             @include font-size(10px);
             top: calc((var(--form-element-padding) + 5px) * -1);
             opacity: 0.8;
         }
-	}
+    }
 
     &--boxed {
         background: var(--gray-200);
@@ -47,8 +51,8 @@
         @include bordered-styles();
     }
 
-	&--line {
-		background: transparent;
+    &--line {
+        background: transparent;
 
         hr {
             position: absolute;
@@ -61,38 +65,39 @@
         }
 
         .c-formElement--focusLine {
-			top: calc(100% - 1px);
-			right: auto;
-			bottom: auto;
-			left: 0;
-			border: none;
-			width: 0%;
-			height: 1px;
-			background: var(--form-element-color);
-			transition: all .35s $ease-in;
-		}
+            top: calc(100% - 1px);
+            right: auto;
+            bottom: auto;
+            left: 0;
+            border: none;
+            width: 0%;
+            height: 1px;
+            background: var(--form-element-color);
+            transition: all 0.35s $ease-in;
+        }
 
         &.c-floatingLabel {
-			label {
-				left: 0
-			}
-		}
+            label {
+                left: 0;
+            }
+        }
 
-		textarea {
-			padding: var(--form-element-padding) 0 0 0;
-			min-height: 51px;
-		}
+        textarea {
+            padding: var(--form-element-padding) 0 0 0;
+            min-height: 51px;
+        }
 
-		/* Colored line on focus */
-		textarea:focus ~ .c-formElement--focusLine {
-			width: 100%;
-		}
+        /* Colored line on focus */
+        textarea:focus ~ .c-formElement--focusLine {
+            width: 100%;
+        }
 
         /* Floating label */
-        textarea:focus ~ label, :not(:placeholder-shown) ~ label {
+        textarea:focus ~ label,
+        :not(:placeholder-shown) ~ label {
             @include font-size(10px);
             top: calc((var(--form-element-padding) + 5px) * -1);
             opacity: 0.8;
         }
-	}
+    }
 }

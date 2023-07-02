@@ -20,21 +20,23 @@ export default function RotateInOut3D({
     start = 'top bottom',
     end = 'bottom top',
     scrub = false,
-    markers
+    markers,
 }: Rotate3D) {
     const { timeline } = useTransitionContext();
     const element = useRef<HTMLDivElement>(null);
 
     useIsomorphicLayoutEffect(() => {
-        const scrollTrigger = watch ? {
-            scrollTrigger: {
-                trigger: element.current,
-                start,
-                end,
-                scrub,
-                markers: markers
-            }
-        } : {};
+        const scrollTrigger = watch
+            ? {
+                  scrollTrigger: {
+                      trigger: element.current,
+                      start,
+                      end,
+                      scrub,
+                      markers: markers,
+                  },
+              }
+            : {};
 
         const ctx = gsap.context(() => {
             /* Intro animation */
@@ -47,7 +49,7 @@ export default function RotateInOut3D({
                     rotationY: randomNumber(-40, 40),
                     rotationZ: randomNumber(-10, 10),
                     scale: 0.8,
-                    opacity: 0
+                    opacity: 0,
                 },
                 {
                     x: 0,
@@ -60,28 +62,25 @@ export default function RotateInOut3D({
                     ease,
                     delay,
                     duration: durationIn,
-                    ...scrollTrigger
-                }
+                    ...scrollTrigger,
+                },
             );
 
             /* Outro animation */
             if (!skipOutro) {
                 timeline?.add(
-                    gsap.to(
-                        element.current,
-                        {
-                            x,
-                            y,
-                            rotationX: randomNumber(-80, 80),
-                            rotationY: randomNumber(-40, 40),
-                            rotationZ: randomNumber(-10, 10),
-                            opacity: 0,
-                            ease: easeOut,
-                            delay: delayOut,
-                            duration: durationOut
-                        }
-                    ),
-                    0
+                    gsap.to(element.current, {
+                        x,
+                        y,
+                        rotationX: randomNumber(-80, 80),
+                        rotationY: randomNumber(-40, 40),
+                        rotationZ: randomNumber(-10, 10),
+                        opacity: 0,
+                        ease: easeOut,
+                        delay: delayOut,
+                        duration: durationOut,
+                    }),
+                    0,
                 );
             }
         }, element);
@@ -93,4 +92,4 @@ export default function RotateInOut3D({
             {children}
         </div>
     );
-};
+}

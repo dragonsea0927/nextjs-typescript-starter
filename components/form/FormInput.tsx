@@ -7,7 +7,7 @@ export default function FormInput({
     label,
     type = 'text',
     id,
-    placeholder=" ",
+    placeholder = ' ',
     value,
     required,
     className,
@@ -15,7 +15,7 @@ export default function FormInput({
     register,
     errors,
 }: Input) {
-    return(
+    return (
         <div className={wrapperClassName}>
             <div
                 className={classNames(
@@ -23,8 +23,8 @@ export default function FormInput({
                     styles[className],
                     {
                         [styles['c-floatingLabel']]: label,
-                        [styles['has-error']]: errors?.message
-                    }
+                        [styles['has-error']]: errors?.message,
+                    },
                 )}
             >
                 <input
@@ -35,14 +35,17 @@ export default function FormInput({
                     required={required}
                     {...register}
                 />
-                {label && htmlFor &&
-                    <label htmlFor={htmlFor}>{label}{required && ' *'}</label>
-                }
+                {label && htmlFor && (
+                    <label htmlFor={htmlFor}>
+                        {label}
+                        {required && ' *'}
+                    </label>
+                )}
                 <span className={styles['c-formElement--focusLine']} />
             </div>
-            {errors?.message &&
+            {errors?.message && (
                 <label htmlFor={htmlFor}>{errors?.message}</label>
-            }
+            )}
         </div>
     );
 }

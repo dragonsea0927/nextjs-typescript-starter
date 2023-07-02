@@ -29,21 +29,23 @@ export default function ShuffleTextInOut({
     start = 'top bottom',
     end = 'bottom top',
     scrub = false,
-    markers
+    markers,
 }: ShuffleText) {
     const { timeline } = useTransitionContext();
     const element = useRef<HTMLDivElement>(null);
 
     useIsomorphicLayoutEffect(() => {
-        const scrollTrigger = watch ? {
-            scrollTrigger: {
-                trigger: element.current,
-                start,
-                end,
-                scrub,
-                markers: markers
-            }
-        } : {};
+        const scrollTrigger = watch
+            ? {
+                  scrollTrigger: {
+                      trigger: element.current,
+                      start,
+                      end,
+                      scrub,
+                      markers: markers,
+                  },
+              }
+            : {};
 
         const ctx = gsap.context(() => {
             /* Sets opacity on the parent */
@@ -51,23 +53,23 @@ export default function ShuffleTextInOut({
                 gsap.to(element.current, {
                     opacity: 1,
                     delay,
-                    ...scrollTrigger
+                    ...scrollTrigger,
                 });
             }
 
             /* Splits the target */
             const splitWord = new SplitText(target, {
-                type: 'words'
+                type: 'words',
             });
             const words = splitWord.words;
 
             /* Intro animation */
-            words.forEach(word => {
+            words.forEach((word) => {
                 const splitText = new SplitText(word);
                 const chars = shuffle(splitText.chars as HTMLElement[]);
                 let string = '';
 
-                chars.forEach(char => {
+                chars.forEach((char) => {
                     string += char.innerText;
                 });
 
@@ -75,12 +77,12 @@ export default function ShuffleTextInOut({
                     ease,
                     delay,
                     duration: durationIn,
-                    scrambleText:{
+                    scrambleText: {
                         text: '{original}',
                         chars: string,
-                        revealDelay: revealDelayIn
+                        revealDelay: revealDelayIn,
                     },
-                    ...scrollTrigger
+                    ...scrollTrigger,
                 });
 
                 /* Outro animation */
@@ -91,13 +93,13 @@ export default function ShuffleTextInOut({
                             ease: easeOut,
                             delay: delayOut,
                             duration: durationOut,
-                            scrambleText:{
+                            scrambleText: {
                                 text: '{original}',
                                 chars: string,
-                                revealDelay: revealDelayOut
-                            }
+                                revealDelay: revealDelayOut,
+                            },
                         }),
-                        0
+                        0,
                     );
                 }
             });
@@ -110,4 +112,4 @@ export default function ShuffleTextInOut({
             {children}
         </div>
     );
-};
+}
