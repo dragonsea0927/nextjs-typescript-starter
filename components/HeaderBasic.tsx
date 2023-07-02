@@ -7,7 +7,7 @@ export default function HeaderBasic({
     title,
     wysiwyg,
     button,
-    className
+    className,
 }: {
     title: string;
     wysiwyg?: string;
@@ -16,17 +16,27 @@ export default function HeaderBasic({
 }) {
     return (
         <>
-            {title &&
-                <section className={classNames(styles['c-headerBasic'], styles[className!])}>
-                    <div className="o-container--small">
-                        <div className={classNames('u-text--center', styles['c-headerBasic__row'])}>
-                            <h1 id="title">{title}</h1>
-                            {wysiwyg &&
-                                <div className="o-wysiwyg">
+            {title && (
+                <section
+                    className={classNames(
+                        styles['c-headerBasic'],
+                        styles[className ?? '']
+                    )}
+                >
+                    <div className='o-container--small'>
+                        <div
+                            className={classNames(
+                                'u-text--center',
+                                styles['c-headerBasic__row']
+                            )}
+                        >
+                            <h1 id='title'>{title}</h1>
+                            {wysiwyg && (
+                                <div className='o-wysiwyg'>
                                     <p>{wysiwyg}</p>
                                 </div>
-                            }
-                            {button &&
+                            )}
+                            {button && (
                                 <Button
                                     label={button.label}
                                     href={button.href}
@@ -35,13 +45,15 @@ export default function HeaderBasic({
                                     anchor={button.anchor}
                                     onClick={button.onClick}
                                     className={button.className}
-                                    wrapperClassName={styles['c-headerBasic__btn']}
+                                    wrapperClassName={
+                                        styles['c-headerBasic__btn']
+                                    }
                                 />
-                            }
+                            )}
                         </div>
                     </div>
                 </section>
-            }
+            )}
         </>
     );
 }

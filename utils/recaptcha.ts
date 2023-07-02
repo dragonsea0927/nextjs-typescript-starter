@@ -1,4 +1,4 @@
-import { NextApiResponse } from "next";
+import { NextApiResponse } from 'next';
 
 /**
  * Validates recaptcha and interprets the score
@@ -14,10 +14,10 @@ export const validateRecaptcha = async (token: string, res: NextApiResponse): Pr
         const response = await fetch("https://www.google.com/recaptcha/api/siteverify", {
             method: 'POST',
             headers: {
-            'Content-Type': 'application/x-www-form-urlencoded',
+                'Content-Type': 'application/x-www-form-urlencoded',
             },
             body: `secret=${process.env.RECAPTCHA_SECRET_KEY}&response=${token}`,
-        })
+        });
 
         const result = await response.json();
 
@@ -29,6 +29,7 @@ export const validateRecaptcha = async (token: string, res: NextApiResponse): Pr
         }
         throw new Error(`Error validating captcha: ${result['error-codes'][0]}`);
 
+        // eslint-disable-next-line @typescript-eslint/no-explicit-any
     } catch (err: any) {
         res.status(422).json({ message: err.message });
         return false;
