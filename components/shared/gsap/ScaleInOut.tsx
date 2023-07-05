@@ -8,8 +8,8 @@ export default function ScaleInOut({
     durationOut = 0.25,
     delay = 0,
     delayOut = 0,
-    ease = 'power4.out',
-    easeOut = 'power4.out',
+    ease,
+    easeOut,
     scale = '0, 0',
     scaleTo = '1, 1',
     x = '0px',
@@ -17,6 +17,7 @@ export default function ScaleInOut({
     xTo = 0,
     yTo = 0,
     transformOrigin,
+    outro,
     skipOutro,
     watch,
     start = 'top bottom',
@@ -43,6 +44,7 @@ export default function ScaleInOut({
                 y: yTo,
                 transformOrigin,
             }}
+            outro={outro}
             skipOutro={skipOutro}
             watch={watch}
             start={start}
