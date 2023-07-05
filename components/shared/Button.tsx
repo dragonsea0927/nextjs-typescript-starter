@@ -19,7 +19,7 @@ export default function Button({
         return (
             <div className={wrapperClassName}>
                 <Link
-                    className={styles[className]}
+                    className={styles[className ?? '']}
                     href={href}
                     onClick={onClick}
                 >
@@ -33,7 +33,7 @@ export default function Button({
         return (
             <div className={wrapperClassName}>
                 <a
-                    className={styles[className]}
+                    className={styles[className ?? '']}
                     target={isExternal ? '_blank' : undefined}
                     rel={isExternal ? 'noopener noreferrer' : undefined}
                     href={externalHref ? externalHref : `#${anchor}`}
@@ -48,7 +48,7 @@ export default function Button({
         <div className={wrapperClassName}>
             <button
                 type={type}
-                className={styles[className]}
+                className={styles[className ?? '']}
                 onClick={onClick}
                 disabled={disabled}
             >
