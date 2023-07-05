@@ -8,8 +8,8 @@ export default function RotateInOut({
     durationOut = 0.25,
     delay = 0,
     delayOut = 0,
-    ease = 'power1.out',
-    easeOut = 'power1.out',
+    ease,
+    easeOut,
     rotate = 0,
     rotateTo = 0,
     rotateX = 0,
@@ -21,6 +21,7 @@ export default function RotateInOut({
     xTo = 0,
     yTo = 0,
     transformOrigin,
+    outro,
     skipOutro,
     watch,
     start = 'top bottom',
@@ -49,6 +50,7 @@ export default function RotateInOut({
                 y: yTo,
                 transformOrigin,
             }}
+            outro={outro}
             skipOutro={skipOutro}
             watch={watch}
             start={start}
