@@ -28,7 +28,7 @@ export default function FadeInOut({
                 opacity: 0,
             }}
             to={{
-                ease: ease,
+                ease,
                 opacity: 1,
             }}
             outro={outro}
