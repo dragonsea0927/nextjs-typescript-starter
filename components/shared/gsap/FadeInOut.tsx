@@ -3,12 +3,13 @@ import AnimateInOut from './AnimateInOut';
 
 export default function FadeInOut({
     children,
-    durationIn = 0.5,
-    durationOut = 0.25,
+    durationIn = 1,
+    durationOut = 0.35,
     delay = 0,
     delayOut = 0,
-    ease = 'power4.out',
-    easeOut = 'power4.out',
+    ease,
+    easeOut,
+    outro,
     skipOutro,
     watch,
     start = 'top bottom',
@@ -27,9 +28,10 @@ export default function FadeInOut({
                 opacity: 0,
             }}
             to={{
-                ease,
+                ease: ease,
                 opacity: 1,
             }}
+            outro={outro}
             skipOutro={skipOutro}
             watch={watch}
             start={start}

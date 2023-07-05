@@ -13,6 +13,7 @@ function AnimateInOut({
     easeOut,
     from,
     to,
+    outro,
     skipOutro,
     watch,
     start,
@@ -21,7 +22,7 @@ function AnimateInOut({
     markers,
 }: Animation) {
     const { timeline } = useTransitionContext();
-    const element = useRef<HTMLDivElement>(null);
+    const element = useRef<HTMLDivElement | null>(null);
 
     useIsomorphicLayoutEffect(() => {
         const scrollTrigger = watch
@@ -47,10 +48,11 @@ function AnimateInOut({
 
             /* Outro animation */
             if (!skipOutro) {
+                const outroProperties = outro ?? from;
                 timeline?.add(
                     gsap.to(element.current, {
                         ease: easeOut,
-                        ...from,
+                        ...outroProperties,
                         delay: delayOut,
                         duration: durationOut,
                     }),
