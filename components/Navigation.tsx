@@ -8,8 +8,8 @@ import NavItem from './NavItem';
 import classNames from 'classnames';
 
 export default function Navigation() {
-    const { setRef, open, sticky, hidden } = useNavigationContext();
-    const [navigationRef, { height }] = useElementSize();
+    const { navigationRef, open, sticky, hidden } = useNavigationContext();
+    const [headerRef, { height }] = useElementSize();
 
     return (
         <>
@@ -25,8 +25,8 @@ export default function Navigation() {
                     [styles['is-open']]: open,
                 })}
                 ref={(el: HTMLDivElement) => {
-                    navigationRef(el);
-                    setRef(el);
+                    headerRef(el);
+                    navigationRef.current = el;
                 }}
             >
                 <div className="o-container">

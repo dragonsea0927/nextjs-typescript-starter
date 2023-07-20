@@ -1,10 +1,10 @@
 import {
-    Dispatch,
+    MutableRefObject,
     ReactNode,
-    SetStateAction,
     createContext,
     useContext,
     useEffect,
+    useRef,
     useState,
 } from 'react';
 import { useRouter } from 'next/router';
@@ -13,8 +13,7 @@ import useWindowSize from '@/hooks/useWindowSize';
 import useLockedScroll from '@/hooks/useLockedScroll';
 
 interface NavigationContextType {
-    ref: HTMLElement | null;
-    setRef: Dispatch<SetStateAction<HTMLElement | null>>;
+    navigationRef: MutableRefObject<HTMLElement | null>;
     open: boolean;
     sticky: boolean;
     hidden: boolean;
@@ -22,8 +21,9 @@ interface NavigationContextType {
 }
 
 const NavigationContext = createContext<NavigationContextType>({
-    ref: null,
-    setRef: () => null,
+    navigationRef: {
+        current: null,
+    },
     open: false,
     sticky: false,
     hidden: false,
@@ -35,7 +35,7 @@ export function NavigationContextProvider({
 }: {
     children: ReactNode;
 }) {
-    const [ref, setRef] = useState<HTMLElement | null>(null);
+    const navigationRef = useRef<HTMLElement | null>(null);
     const [open, setOpen] = useState(false);
     const { scrollY, directionY } = useScrollbar();
     const { windowSize, isDesktop } = useWindowSize();
@@ -66,8 +66,7 @@ export function NavigationContextProvider({
     }, [router.asPath]);
 
     const contextValue: NavigationContextType = {
-        ref,
-        setRef,
+        navigationRef,
         open,
         sticky: scrollY > 0,
         hidden:
