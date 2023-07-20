@@ -18,12 +18,15 @@ export function useSessionStorage<T>(
     key: string,
     initialValue: T,
 ): [T, SetValue<T>] {
+    /* State to store the value */
+    const [storedValue, setStoredValue] = useState<T>(initialValue);
+
     /**
      * Get from session storage then
      * parse stored json or return initialValue
      */
     const readValue = useCallback((): T => {
-        /* Prevent build error "window is undefined" but keeps working */
+        /* Prevents build error "window is undefined" but keeps working */
         if (typeof window === 'undefined') {
             return initialValue;
         }
@@ -37,14 +40,11 @@ export function useSessionStorage<T>(
         }
     }, [initialValue, key]);
 
-    /* State to store the value */
-    const [storedValue, setStoredValue] = useState<T>(readValue);
-
     /**
      * Sets the value in sessionStorage
      */
     const setValue: SetValue<T> = (value) => {
-        /* Prevent build error "window is undefined" but keeps working */
+        /* Prevents build error "window is undefined" but keeps working */
         if (typeof window == 'undefined') {
             console.warn(
                 `Tried setting sessionStorage key "${key}" even though environment is not a client`,
@@ -86,15 +86,11 @@ export function useSessionStorage<T>(
     );
 
     useEffect(() => {
-        /* This only works for other documents, not the current one */
-        window.addEventListener('storage', handleStorageChange);
-
         /* This is a custom event, triggered in writeValueToSessionStorage */
         window.addEventListener('session-storage', handleStorageChange);
 
         /* Remove event listeners on cleanup */
         return () => {
-            window.removeEventListener('storage', handleStorageChange);
             window.removeEventListener('session-storage', handleStorageChange);
         };
 
@@ -104,7 +100,9 @@ export function useSessionStorage<T>(
     return [storedValue, setValue];
 }
 
-// A wrapper for "JSON.parse()"" to support "undefined" value
+/**
+ * A wrapper for "JSON.parse()" to support "undefined" value
+ */
 function parseJSON<T>(value: string | null): T | undefined {
     try {
         return value === 'undefined' ? undefined : JSON.parse(value ?? '');
