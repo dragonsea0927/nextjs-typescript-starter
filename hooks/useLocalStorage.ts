@@ -18,12 +18,15 @@ export default function useLocalStorage<T>(
     key: string,
     initialValue: T,
 ): [T, SetValue<T>] {
+    /* State to store the value */
+    const [storedValue, setStoredValue] = useState<T>(initialValue);
+
     /**
      * Retrieves from the localStorage the value saved with the key argument
      * then parse stored json or return initialValue
      */
     const readValue = useCallback(() => {
-        /* Prevent build error "window is undefined" but keeps working */
+        /* Prevents build error "window is undefined" but keeps working */
         if (typeof window === 'undefined') {
             return initialValue;
         }
@@ -37,14 +40,11 @@ export default function useLocalStorage<T>(
         }
     }, [initialValue, key]);
 
-    /* State to store the value */
-    const [storedValue, setStoredValue] = useState<T>(readValue);
-
     /**
      * Sets the value in localStorage
      */
     const setValue: SetValue<T> = (value) => {
-        /* Prevent build error "window is undefined" but keeps working */
+        /* Prevents build error "window is undefined" but keeps working */
         if (typeof window === 'undefined') {
             console.warn(
                 `Tried setting localStorage key "${key}" even though environment is not a client`,
