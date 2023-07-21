@@ -3,6 +3,7 @@ import { ReactNode, useState } from 'react';
 import { useRouter } from 'next/router';
 import useIsomorphicLayoutEffect from '@/hooks/useIsomorphicLayoutEffect';
 import ScrollTrigger from 'gsap/dist/ScrollTrigger';
+import useNavigationContext from '@/context/navigationContext';
 
 export default function TransitionLayout({
     children,
@@ -10,20 +11,16 @@ export default function TransitionLayout({
     children: ReactNode;
 }) {
     const router = useRouter();
-    const [currentPage, setCurrentPage] = useState({
-        route: router.asPath,
-        children,
-    });
+    const [displayChildren, setDisplayChildren] = useState(children);
     const { timeline, resetTimeline } = useTransitionContext();
+    const { setCurrentRoute, currentRoute } = useNavigationContext();
 
     useIsomorphicLayoutEffect(() => {
-        if (currentPage.route !== router.asPath) {
+        if (currentRoute !== router.asPath) {
             if (timeline?.duration() === 0) {
                 /* There are no outro animations, so immediately transition */
-                setCurrentPage({
-                    route: router.asPath,
-                    children,
-                });
+                setDisplayChildren(children);
+                setCurrentRoute(router.asPath);
                 ScrollTrigger.refresh(true);
                 return;
             }
@@ -31,10 +28,8 @@ export default function TransitionLayout({
             timeline?.play().then(() => {
                 /* outro complete so reset to an empty paused timeline */
                 resetTimeline();
-                setCurrentPage({
-                    route: router.asPath,
-                    children,
-                });
+                setDisplayChildren(children);
+                setCurrentRoute(router.asPath);
                 ScrollTrigger.refresh(true);
             });
         } else {
@@ -42,5 +37,5 @@ export default function TransitionLayout({
         }
     }, [router.asPath]);
 
-    return <div className="u-overflow--hidden">{currentPage.children}</div>;
+    return <div className="u-overflow--hidden">{displayChildren}</div>;
 }
