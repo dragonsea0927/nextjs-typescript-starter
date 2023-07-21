@@ -4,7 +4,7 @@ import classNames from 'classnames';
 import useNavigationContext from '@/context/navigationContext';
 
 export default function MobileNavigation() {
-    const { open, toggle } = useNavigationContext();
+    const { mobileNavRef, open, toggle } = useNavigationContext();
 
     return (
         <>
@@ -14,6 +14,7 @@ export default function MobileNavigation() {
                     className={classNames(styles['c-mobileNav'], {
                         [styles['is-open']]: open,
                     })}
+                    ref={mobileNavRef}
                 >
                     <div className={styles['c-mobileNav__scroll']}>
                         <div className={styles['c-mobileNav__container']}>

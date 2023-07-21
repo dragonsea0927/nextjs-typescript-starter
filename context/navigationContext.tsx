@@ -1,6 +1,7 @@
 import {
     MutableRefObject,
     ReactNode,
+    RefObject,
     createContext,
     useContext,
     useEffect,
@@ -14,6 +15,7 @@ import useLockedScroll from '@/hooks/useLockedScroll';
 
 interface NavigationContextType {
     navigationRef: MutableRefObject<HTMLElement | null>;
+    mobileNavRef: RefObject<HTMLDivElement>;
     open: boolean;
     sticky: boolean;
     hidden: boolean;
@@ -22,6 +24,9 @@ interface NavigationContextType {
 
 const NavigationContext = createContext<NavigationContextType>({
     navigationRef: {
+        current: null,
+    },
+    mobileNavRef: {
         current: null,
     },
     open: false,
@@ -36,6 +41,7 @@ export function NavigationContextProvider({
     children: ReactNode;
 }) {
     const navigationRef = useRef<HTMLElement | null>(null);
+    const mobileNavRef = useRef<HTMLDivElement | null>(null);
     const [open, setOpen] = useState(false);
     const { scrollY, directionY } = useScrollbar();
     const { windowSize, isDesktop } = useWindowSize();
@@ -67,6 +73,7 @@ export function NavigationContextProvider({
 
     const contextValue: NavigationContextType = {
         navigationRef,
+        mobileNavRef,
         open,
         sticky: scrollY > 0,
         hidden:
