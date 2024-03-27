@@ -1,0 +1,27 @@
+/* ==========================================================================
+    Modal
+========================================================================== */
+
+.m-modal {
+    position: fixed;
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+	z-index: 7000;
+    background: var(--modal-backdrop-color);
+    backdrop-filter: saturate(180%) blur(5px);
+    opacity: 0;
+    pointer-events: none;
+
+    &__backdrop {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+    }
+}

@@ -1,0 +1,17 @@
+/* ==========================================================================
+    Form Radio
+========================================================================== */
+
+.c-formElement {
+    @include default-styles();
+
+	&--radio {
+		@include input-checkbox-reset();
+
+        label {
+			&::before {
+				border-radius: 40px;
+			}
+		}
+	}
+}

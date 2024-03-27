@@ -12,15 +12,36 @@
     }
 
     /* Theme */
-    --body-text-color: var(--white);
-    --body-heading-color: var(--white);
+    --body-text-color: var(--black);
+    --body-heading-color: var(--primary);
+    --body-current-page-color: var(--primary);
     --body-link-color: var(--body-text-color);
-    --body-bg-color: var(--black);
+    --body-bg-color: var(--white);
+    --section-bg-color: var(--gray-100);
+    --form-element-color: var(--primary);
+    --btn-bg-color: var(--primary);
+    --btn-border-color: var(--primary);
+    --btn-color: var(--white);
+    --btn-hover-color: var(--white);
+    --btn-hover-bg-color: var(--primary-light);
+    --btn-hover-border-color: var(--primary-light);
+    --navigation-sticky-bg: hsla(0, 0%, 100%, 0.8);
+    --navigation-box-shadow: inset 0 -1px 0 0 rgba(0, 0, 0, 0.1);
+    --navigation-mobile-bg-color: var(--secondary);
+    --navigation-link-color: var(--black);
+    --navigation-link-current-color: var(--primary);
+    --modal-backdrop-color: rgba(0, 0, 0, 0.1);
+    --box-shadow-color: 0, 0, 0;
 
-    /* Font Families - css variables are defined in _app */
+    /* Font Families
+
+    css variables are defined in _app
+    --font-primary: 'Roboto', sans-serif;
+    --font-secondary: 'Victor Mono', sans-serif;
+
+    */
 
     /* Font Weight */
-    --font-extra-light: 200;
     --font-extra-light: 200;
     --font-light: 300;
     --font-regular: 400;
@@ -49,6 +70,31 @@
     --info: #{$info};
     --warning: #{$warning};
     --error: #{$error};
+}
+
+/* Theme
+========================================================================== */
+
+[data-theme='dark'] {
+    --body-text-color: var(--white);
+    --body-heading-color: var(--secondary);
+    --body-current-page-color: var(--secondary);
+    --body-bg-color: var(--black);
+    --section-bg-color: var(--gray-600);
+    --form-element-color: var(--secondary);
+    --btn-bg-color: var(--secondary);
+    --btn-border-color: var(--secondary);
+    --btn-color: var(--black);
+    --btn-hover-bg-color: var(--secondary-light);
+    --btn-hover-color: var(--black);
+    --btn-hover-border-color: var(--secondary-light);
+    --navigation-sticky-bg: rgba(0, 0, 0, 0.5);
+    --navigation-box-shadow: inset 0 -1px 0 0 hsla(0, 0%, 100%, 0.1);
+    --navigation-mobile-bg-color: var(--primary);
+    --navigation-link-color: var(--white);
+    --navigation-link-current-color: var(--secondary);
+    --modal-backdrop-color: rgba(0, 0, 0, 0.5);
+    --box-shadow-color: 255, 255, 255;
 }
 
 /* Document

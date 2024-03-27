@@ -3,5 +3,75 @@
 ========================================================================== */
 
 .c-footer {
-    padding: 0 0 var(--spacing-thin) 0;
+    --footer-padding: 22px;
+
+    position: relative;
+    padding: var(--footer-padding) 0;
+    border-top: 1px solid var(--gray-400);
+    background: var(--section-bg-color);
+
+    &__copyright {
+        text-align: center;
+    }
+
+    &__list {
+        ul {
+            text-align: center;
+
+            li {
+                &:last-child {
+                    padding: 0;
+                    margin: 0;
+                }
+
+                span {
+                    a {
+                        &.is-current-page {
+                            color: var(--secondary);
+                        }
+                    }
+                }
+            }
+        }
+    }
+
+    // **---------------------------------------------------**
+    // MEDIA QUERIES
+
+    @include mediaq('<SM') {
+        &__list {
+            ul {
+                li {
+                    &:last-child {
+                        padding: 0;
+                        margin: 0;
+                    }
+                }
+            }
+        }
+    }
+
+    @include mediaq('>SM') {
+        &__row {
+            display: flex;
+            flex-direction: row-reverse;
+            justify-content: space-between;
+        }
+
+        &__list {
+            ul {
+                display: flex;
+                margin: 0;
+
+                li {
+                    margin: 0;
+                    padding: 0;
+
+                    &:not(:last-child) {
+                        margin-right: 15px;
+                    }
+                }
+            }
+        }
+    }
 }

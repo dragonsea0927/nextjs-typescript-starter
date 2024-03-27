@@ -68,11 +68,11 @@ label,
 
 .c-toastify {
     .Toastify__toast {
-        background: var(--white);
-        color: var(--black);
+        background: var(--body-bg-color);
+        color: var(--body-text-color);
 
         .Toastify__close-button {
-            color: var(--black);
+            color: var(--body-text-color);
         }
     }
 }

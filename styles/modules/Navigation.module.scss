@@ -4,11 +4,6 @@
 
 .c-navigation {
     --navigation-bg: transparent;
-    --navigation-sticky-bg: rgba(0, 0, 0, 0.5);
-    --navigation-box-shadow: inset 0 -1px 0 0 hsla(0, 0%, 100%, 0.1);
-    --navigation-mobile-bg-color: var(--primary);
-    --navigation-link-color: var(--white);
-    --navigation-link-current-color: var(--secondary);
     --navigation-padding: 15px;
 
     position: fixed;
@@ -79,6 +74,12 @@
             order: 1;
         }
 
+        &__switch {
+            order: 2;
+            padding-right: 15px;
+            margin-left: auto;
+        }
+
         &__nav {
             display: none;
         }
@@ -135,7 +136,7 @@
 
                                     &.is-current-page {
                                         --navigation-link-color: var(
-                                            --navigation-link-current-color
+                                            --body-current-page-color
                                         );
                                     }
                                 }

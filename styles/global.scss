@@ -1,0 +1,127 @@
+/* ==========================================================================
+    Global
+========================================================================== */
+
+/* Grid section
+========================================================================== */
+
+.c-gridSection {
+    &__row {
+        display: grid;
+        grid-template-columns: repeat(1, 1fr);
+        gap: 25px;
+        margin: 45px 0 0;
+    }
+
+    &__item {
+        --body-text-color: var(--black);
+
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        padding: 30px;
+        border-radius: 16px;
+        text-align: center;
+        background: var(--white);
+        box-shadow: 0 20px 25px -5px rgba(var(--box-shadow-color), 0.1),
+            0 8px 10px -6px rgba(var(--box-shadow-color), 0.1);
+        border: 1px solid rgb($gray-200, 0.6);
+        min-height: 265px;
+    }
+
+    &__rotate {
+        display: flex;
+        justify-content: space-around;
+        align-items: center;
+        padding: var(--spacing-responsive) 0;
+
+        &--box {
+            width: 100px;
+            height: 100px;
+            background: var(--body-current-page-color);
+            border-radius: 16px;
+        }
+    }
+
+    // **---------------------------------------------------**
+    // MEDIA QUERIES
+
+    @include mediaq('>SM') {
+        &__row {
+            grid-template-columns: repeat(2, 1fr);
+        }
+    }
+
+    @include mediaq('>LG') {
+        &__row {
+            grid-template-columns: repeat(3, 1fr);
+        }
+    }
+}
+
+/* Flex section
+========================================================================== */
+
+.c-flexSection {
+    &__row {
+        margin: 45px 0 0;
+    }
+
+    &__item {
+        &:first-child ~ & {
+            margin: 25px 0 0 0;
+        }
+    }
+
+    // **---------------------------------------------------**
+    // MEDIA QUERIES
+
+    @include mediaq('>SM') {
+        &__row {
+            display: flex;
+        }
+
+        &__item {
+            &:first-child ~ & {
+                margin: 0 0 0 25px;
+            }
+        }
+    }
+}
+
+/* Rotate In Out 3D
+========================================================================== */
+
+.c-rotateInOut3D {
+    &__row {
+        display: grid;
+        grid-template-columns: repeat(5, 1fr);
+        width: 100%;
+        padding: var(--spacing-responsive) 0;
+    }
+
+    &__item {
+        width: 100%;
+        height: 150px;
+
+        &--1 {
+            background: var(--primary-light);
+        }
+
+        &--2 {
+            background: var(--primary-lighter);
+        }
+
+        &--3 {
+            background: var(--primary);
+        }
+
+        &--4 {
+            background: var(--primary-dark);
+        }
+
+        &--5 {
+            background: var(--primary-darker);
+        }
+    }
+}

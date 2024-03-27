@@ -1,0 +1,68 @@
+/* ==========================================================================
+    Accordion Item
+========================================================================== */
+
+.c-accordions {
+    &__item {
+        padding: 0;
+        margin: 0;
+        border: 1px solid var(--gray-600);
+        overflow: hidden;
+
+        &:first-of-type {
+            border-top-left-radius: 6px;
+            border-top-right-radius: 6px;
+        }
+
+        &:last-of-type {
+            border-bottom-left-radius: 6px;
+            border-bottom-right-radius: 6px;
+        }
+
+        > h1, h2, h3, h4, h5, h6 {
+            margin: 0;
+        }
+
+        &__button {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            width: 100%;
+            padding: 16px 20px;
+            color: inherit;
+        	transition: all .35s $ease-in;
+
+            svg {
+                width: 30px;
+                transition: transform .35s $ease-in;
+                margin-left: 15px;
+            }
+
+            /* states */
+            &.is-expanded {
+                background: var(--btn-bg-color);
+                color: var(--btn-color);
+
+                svg {
+                    transform: rotate(180deg);
+                }
+            }
+        }
+
+        &__container {
+            height: 0;
+            opacity: 0;
+            overflow: hidden;
+
+            &--content {
+                padding: 16px 20px;
+
+                * {
+                    &:first-child {
+                        margin: 0;
+                    }
+                }
+            }
+        }
+    }
+}
