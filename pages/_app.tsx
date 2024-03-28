@@ -6,6 +6,7 @@ import localFont from 'next/font/local';
 import type { AppProps } from 'next/app';
 import { useEffect } from 'react';
 import { useRouter } from 'next/router';
+import useNextCssRemovalPrevention from '@/hooks/useNextCssRemovalPrevention';
 import { GoogleReCaptchaProvider } from 'react-google-recaptcha-v3';
 import { TransitionContextProvider } from '@/context/transitionContext';
 import { NavigationContextProvider } from '@/context/navigationContext';
@@ -68,6 +69,9 @@ export default function App({ Component, pageProps }: AppProps) {
         document.activeElement instanceof HTMLElement &&
             document.activeElement.blur();
     }, [router]);
+
+    /* Temporary fix to avoid flash of unstyled content (FOUC) during route transitions */
+    useNextCssRemovalPrevention();
 
     return (
         <>
