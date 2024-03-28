@@ -26,7 +26,7 @@ export default function TransitionLayout({
             }
 
             timeline?.play().then(() => {
-                /* outro complete so reset to an empty paused timeline */
+                /* Outro complete so reset to an empty paused timeline */
                 resetTimeline();
                 setDisplayChildren(children);
                 setCurrentRoute(router.asPath);

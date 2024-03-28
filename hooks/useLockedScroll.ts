@@ -6,7 +6,6 @@ type UseLockedScrollOutput = [boolean, (locked: boolean) => void];
 export default function useLockedScroll(
     initialLocked = false,
 ): UseLockedScrollOutput {
-    // const { ref } = useNavigationContext();
     const [locked, setLocked] = useState(initialLocked);
 
     /* Do the side effect before render */
@@ -30,10 +29,6 @@ export default function useLockedScroll(
         const scrollBarWidth = window.innerWidth - originalDocumentWidth;
 
         /* Avoid width reflow */
-        // if (ref && scrollBarWidth) {
-        //     document.body.style.paddingRight = `${scrollBarWidth}px`;
-        //     ref.style.right = `${scrollBarWidth}px`;
-        // }
         if (scrollBarWidth) {
             document.body.style.paddingRight = `${scrollBarWidth}px`;
         }
@@ -43,9 +38,6 @@ export default function useLockedScroll(
             document.body.style.height = originalHeight;
             document.body.classList.remove('has-scroll-lock');
 
-            // if (ref && scrollBarWidth) {
-            //     document.body.style.paddingRight = originalPaddingRight;
-            //     ref.style.right = `0px`;
             if (scrollBarWidth) {
                 document.body.style.paddingRight = originalPaddingRight;
             }
