@@ -1,17 +1,60 @@
 import '@/styles/style.scss';
 import gsap from 'gsap';
 import ScrollTrigger from 'gsap/dist/ScrollTrigger';
+import { Roboto } from 'next/font/google';
+import localFont from 'next/font/local';
 import type { AppProps } from 'next/app';
-import { useRouter } from 'next/router';
 import { useEffect } from 'react';
+import { useRouter } from 'next/router';
 import { GoogleReCaptchaProvider } from 'react-google-recaptcha-v3';
 import { TransitionContextProvider } from '@/context/transitionContext';
 import { NavigationContextProvider } from '@/context/navigationContext';
 import Layout from '@/components/Layout';
-import { Inter } from 'next/font/google';
 
-const inter = Inter({
+const roboto = Roboto({
+    fallback: [
+        '-apple-systen',
+        'BlinkMacSystemFont',
+        'Segoe UI',
+        'Oxygen',
+        'Ubuntu',
+        'Cantarell',
+        'Fira Sans',
+        'Droid Sans',
+        'Helvetica Neue',
+        'sans-serif',
+    ],
+    weight: ['300', '400', '500', '700', '900'],
+    style: ['normal', 'italic'],
     subsets: ['latin'],
+    display: 'swap',
+});
+
+const victorMono = localFont({
+    fallback: [
+        '-apple-systen',
+        'BlinkMacSystemFont',
+        'Segoe UI',
+        'Oxygen',
+        'Ubuntu',
+        'Cantarell',
+        'Fira Sans',
+        'Droid Sans',
+        'Helvetica Neue',
+        'sans-serif',
+    ],
+    src: [
+        {
+            path: '../public/fonts/VictorMono-Regular.woff',
+            weight: '400',
+            style: 'normal',
+        },
+        {
+            path: '../public/fonts/VictorMono-Regular.woff2',
+            weight: '400',
+            style: 'normal',
+        },
+    ],
     display: 'swap',
 });
 
@@ -41,8 +84,9 @@ export default function App({ Component, pageProps }: AppProps) {
                         <style jsx global>
                             {`
                                 :root {
-                                    --font-primary: ${inter.style.fontFamily};
-                                    --font-secondary: ${inter.style.fontFamily};
+                                    --font-primary: ${roboto.style.fontFamily};
+                                    --font-secondary: ${victorMono.style
+                                        .fontFamily};
                                 }
                             `}
                         </style>
