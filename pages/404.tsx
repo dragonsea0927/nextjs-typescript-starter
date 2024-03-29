@@ -1,21 +1,21 @@
 import { GetStaticProps, InferGetStaticPropsType } from 'next';
 import { MetaDataProps } from '@/types/components/global';
-import HeaderBasic from '@/components/BasicHeader';
+import BasicHeader from '@/components/BasicHeader';
 
 export default function PageNotFound({}: InferGetStaticPropsType<
     typeof getStaticProps
 >) {
     return (
         <>
-            <HeaderBasic
+            <BasicHeader
                 title="Page not found"
-                wysiwyg="The page you are looking for could not be found."
+                content="The page you are looking for could not be found."
                 button={{
                     label: 'Please get me out of here',
                     href: '/',
                     className: 'c-btn',
                 }}
-                className="c-headerBasic--fullHeight"
+                className="c-basicHeader--fullHeight"
             />
         </>
     );
