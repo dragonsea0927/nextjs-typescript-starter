@@ -1,7 +1,7 @@
 import styles from '@/styles/modules/Home.module.scss';
 import MetaData from '@/components/MetaData';
-import Next from '@/components/shared/svg/Next';
-import Vercel from '@/components/shared/svg/Vercel';
+import Next from '@/components/icons/Next';
+import Vercel from '@/components/icons/Vercel';
 
 export default function Home() {
     return (

@@ -1,7 +1,7 @@
 import { ButtonProps } from '@/types/components/button';
 import styles from '@/styles/modules/Button.module.scss';
 import Link from 'next/link';
-import Circle from './svg/Circle';
+import Circle from './icons/Circle';
 
 export default function Button({
     label,

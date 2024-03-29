@@ -1,6 +1,6 @@
 import { BasicHeaderProps } from '@/types/components/headers';
 import styles from '@/styles/modules/BasicHeader.module.scss';
-import Button from './shared/Button';
+import Button from './Button';
 import classNames from 'classnames';
 
 export default function BasicHeader({

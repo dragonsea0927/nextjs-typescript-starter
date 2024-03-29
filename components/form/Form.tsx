@@ -10,7 +10,7 @@ import classNames from 'classnames';
 import FormInput from './FormInput';
 import FormTextarea from './FormTextarea';
 import FormRecaptchaNote from './FormRecaptchaNote';
-import Button from '../shared/Button';
+import Button from '../Button';
 import { toast, ToastContainer, Zoom } from 'react-toastify';
 
 const labels: Labels = {
