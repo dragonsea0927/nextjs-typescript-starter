@@ -1,5 +1,6 @@
-import { useRouter } from 'next/router';
+import { NavItemProps } from '@/types/components/global';
 import Link from 'next/link';
+import useNavigationContext from '@/context/navigationContext';
 import classNames from 'classnames';
 
 export default function NavItem({
@@ -7,14 +8,9 @@ export default function NavItem({
     title,
     onClick,
     className,
-}: {
-    href: string;
-    title: string;
-    onClick?: () => void;
-    className: string;
-}) {
-    const router = useRouter();
-    const isActive = router.asPath === href;
+}: NavItemProps) {
+    const { currentRoute } = useNavigationContext();
+    const isActive = currentRoute === href;
 
     return (
         <span>
