@@ -1,25 +1,20 @@
-import { ButtonProps } from '@/types/components/button';
-import styles from '@/styles/modules/HeaderBasic.module.scss';
+import { BasicHeaderProps } from '@/types/components/headers';
+import styles from '@/styles/modules/BasicHeader.module.scss';
 import Button from './shared/Button';
 import classNames from 'classnames';
 
-export default function HeaderBasic({
+export default function BasicHeader({
     title,
-    wysiwyg,
+    content,
     button,
     className,
-}: {
-    title: string;
-    wysiwyg?: string;
-    button?: ButtonProps;
-    className?: string;
-}) {
+}: BasicHeaderProps) {
     return (
         <>
             {title && (
                 <section
                     className={classNames(
-                        styles['c-headerBasic'],
+                        styles['c-basicHeader'],
                         styles[className ?? ''],
                     )}
                 >
@@ -27,26 +22,20 @@ export default function HeaderBasic({
                         <div
                             className={classNames(
                                 'u-text--center',
-                                styles['c-headerBasic__row'],
+                                styles['c-basicHeader__row'],
                             )}
                         >
                             <h1 id="title">{title}</h1>
-                            {wysiwyg && (
+                            {content && (
                                 <div className="o-wysiwyg">
-                                    <p>{wysiwyg}</p>
+                                    <p>{content}</p>
                                 </div>
                             )}
                             {button && (
                                 <Button
-                                    label={button.label}
-                                    href={button.href}
-                                    isExternal={button.isExternal}
-                                    externalHref={button.externalHref}
-                                    anchor={button.anchor}
-                                    onClick={button.onClick}
-                                    className={button.className}
+                                    {...button}
                                     wrapperClassName={
-                                        styles['c-headerBasic__btn']
+                                        styles['c-basicHeader__btn']
                                     }
                                 />
                             )}

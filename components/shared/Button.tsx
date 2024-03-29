@@ -12,7 +12,7 @@ export default function Button({
     type = 'button',
     onClick,
     disabled,
-    className,
+    className = 'c-btn',
     wrapperClassName,
 }: ButtonProps) {
     if (label && href) {

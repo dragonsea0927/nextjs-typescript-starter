@@ -1,6 +1,6 @@
 import { GetStaticProps, InferGetStaticPropsType } from 'next';
 import { MetaDataProps } from '@/types/components/global';
-import HeaderBasic from '@/components/HeaderBasic';
+import HeaderBasic from '@/components/BasicHeader';
 
 export default function PageNotFound({}: InferGetStaticPropsType<
     typeof getStaticProps
