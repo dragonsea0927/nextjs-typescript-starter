@@ -10,6 +10,7 @@ import useNextCssRemovalPrevention from '@/hooks/useNextCssRemovalPrevention';
 import { GoogleReCaptchaProvider } from 'react-google-recaptcha-v3';
 import { TransitionContextProvider } from '@/context/transitionContext';
 import { NavigationContextProvider } from '@/context/navigationContext';
+import MetaData from '@/components/MetaData';
 import Layout from '@/components/Layout';
 
 const roboto = Roboto({
@@ -63,6 +64,7 @@ gsap.registerPlugin(ScrollTrigger);
 
 export default function App({ Component, pageProps }: AppProps) {
     const router = useRouter();
+    const metaData = pageProps.metaData;
 
     /* Removes focus from next/link element after page change */
     useEffect(() => {
@@ -75,6 +77,7 @@ export default function App({ Component, pageProps }: AppProps) {
 
     return (
         <>
+            <MetaData {...metaData} />
             <GoogleReCaptchaProvider
                 reCaptchaKey={process.env.NEXT_PUBLIC_RECAPTCHA_SITE_KEY}
                 scriptProps={{
