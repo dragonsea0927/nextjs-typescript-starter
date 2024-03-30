@@ -1,4 +1,8 @@
-import { InputHTMLAttributes, TextareaHTMLAttributes } from 'react';
+import {
+    InputHTMLAttributes,
+    SelectHTMLAttributes,
+    TextareaHTMLAttributes,
+} from 'react';
 import {
     FieldError,
     UseControllerReturn,
@@ -43,6 +47,18 @@ export interface Radio extends InputHTMLAttributes<HTMLInputElement> {
     className: string;
     wrapperClassName?: string;
     register: UseFormRegisterReturn;
+}
+
+export interface Select extends SelectHTMLAttributes<HTMLSelectElement> {
+    defaultValue: string;
+    htmlFor: string;
+    label: string;
+    id: string;
+    className: string;
+    wrapperClassName?: string;
+    options: string[];
+    register: UseFormRegisterReturn;
+    errors: FieldError | undefined;
 }
 
 export interface Textarea extends TextareaHTMLAttributes<HTMLTextAreaElement> {
