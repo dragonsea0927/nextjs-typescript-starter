@@ -36,6 +36,15 @@ export interface Checkbox extends InputHTMLAttributes<HTMLInputElement> {
     register: UseFormRegisterReturn;
 }
 
+export interface Radio extends InputHTMLAttributes<HTMLInputElement> {
+    htmlFor: string;
+    label: string;
+    id: string;
+    className: string;
+    wrapperClassName?: string;
+    register: UseFormRegisterReturn;
+}
+
 export interface Textarea extends TextareaHTMLAttributes<HTMLTextAreaElement> {
     htmlFor: string;
     label: string;
