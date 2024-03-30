@@ -5,7 +5,9 @@ import {
 } from 'react';
 import {
     FieldError,
+    FieldValues,
     UseControllerReturn,
+    UseFormRegister,
     UseFormRegisterReturn,
 } from 'react-hook-form';
 
@@ -39,6 +41,16 @@ export interface Checkbox extends InputHTMLAttributes<HTMLInputElement> {
     wrapperClassName?: string;
     register: UseFormRegisterReturn;
 }
+
+export type CheckboxList = {
+    title: string;
+    items: string[];
+    className: string;
+    name: string;
+    wrapperClassName?: string;
+    register: UseFormRegister<FieldValues>;
+    errors: FieldError | undefined;
+};
 
 export interface Radio extends InputHTMLAttributes<HTMLInputElement> {
     htmlFor: string;
