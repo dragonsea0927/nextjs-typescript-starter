@@ -47,7 +47,6 @@ export type CheckboxList = {
     items: string[];
     className: string;
     name: string;
-    wrapperClassName?: string;
     register: UseFormRegister<FieldValues>;
     errors: FieldError | undefined;
 };
@@ -60,6 +59,15 @@ export interface Radio extends InputHTMLAttributes<HTMLInputElement> {
     wrapperClassName?: string;
     register: UseFormRegisterReturn;
 }
+
+export type RadioList = {
+    title: string;
+    items: string[];
+    className: string;
+    name: string;
+    register: UseFormRegister<FieldValues>;
+    errors: FieldError | undefined;
+};
 
 export interface Select extends SelectHTMLAttributes<HTMLSelectElement> {
     defaultValue: string;
