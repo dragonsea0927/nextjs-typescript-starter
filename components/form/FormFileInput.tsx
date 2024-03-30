@@ -8,7 +8,6 @@ export default function FormFileInput({
     htmlFor,
     label,
     id,
-    name,
     required,
     className,
     wrapperClassName,
@@ -48,7 +47,7 @@ export default function FormFileInput({
                 <input
                     type="file"
                     id={id}
-                    name={controller?.field.name || name}
+                    name={controller?.field.name}
                     required={required}
                     ref={controller?.field.ref}
                     onBlur={controller?.field.onBlur}
