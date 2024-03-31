@@ -40,9 +40,7 @@ export default function FormRadioList({
                         name={name}
                         value={item}
                         className="c-formElement--radio"
-                        register={register(
-                            `${item.trim().replace(/\s+/g, '-').toLowerCase()}`,
-                        )}
+                        register={register}
                     />
                 ))}
             </div>

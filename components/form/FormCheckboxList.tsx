@@ -4,7 +4,7 @@ import classNames from 'classnames';
 
 export default function FormCheckboxList({
     title,
-    items = ['Perspiciatis amet', 'Quibusdam', 'Recusandae sit', 'Consectetur'],
+    items,
     className,
     name,
     register,
@@ -34,9 +34,7 @@ export default function FormCheckboxList({
                         id={`${item.trim().replace(/\s+/g, '-').toLowerCase()}`}
                         value={item}
                         className="c-formElement--checkboxSvg"
-                        register={register(
-                            `${item.trim().replace(/\s+/g, '-').toLowerCase()}`,
-                        )}
+                        register={register}
                     />
                 ))}
             </div>

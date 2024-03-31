@@ -1,5 +1,6 @@
 import { FormData } from '@/types/form';
-import { object, string, addMethod, ObjectSchema } from 'yup';
+import { object, string, addMethod, ObjectSchema, array } from 'yup';
+// import { object, string, addMethod, ObjectSchema } from 'yup';
 
 const getFormSchema = () => {
     /* Override the email method, if email isn't required we need to add excludeEmptyString: true */
@@ -16,6 +17,10 @@ const getFormSchema = () => {
         email: string()
             .required('This field is required')
             .email('Invalid email address'),
+        subject: string().required('This field is required'),
+        choices: array()
+            .of(string())
+            .min(1, 'Please select one of these choices'),
         message: string().required('This field is required'),
     });
 

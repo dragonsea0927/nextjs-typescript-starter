@@ -9,6 +9,8 @@ import { yupResolver } from '@hookform/resolvers/yup';
 import classNames from 'classnames';
 import FormInput from './FormInput';
 import FormTextarea from './FormTextarea';
+import FormSelect from './FormSelect';
+import FormCheckboxList from './FormCheckboxList';
 import FormRecaptchaNote from './FormRecaptchaNote';
 import Button from '../Button';
 import { toast, ToastContainer, Zoom } from 'react-toastify';
@@ -17,6 +19,9 @@ const labels: Labels = {
     firstname: 'Firstname',
     lastname: 'Lastname',
     email: 'Email',
+    subject: 'Subject',
+    choices: 'Choices',
+    question: 'Question',
     message: 'Message',
 };
 
@@ -47,6 +52,9 @@ export default function Form() {
             firstname: '',
             lastname: '',
             email: '',
+            subject: '',
+            choices: [],
+            // question: '',
             message: '',
         },
         resolver: yupResolver(formSchema),
@@ -163,7 +171,29 @@ export default function Form() {
                                 register={register('email')}
                                 errors={errors['email']}
                             />
+                            <FormSelect
+                                htmlFor="subject"
+                                label="Subject"
+                                id="subject"
+                                options={['Option 1', 'Option 2', 'Option 3']}
+                                required={true}
+                                className="c-formElement--select--bordered"
+                                register={register('subject')}
+                                errors={errors['subject']}
+                            />
                         </div>
+                        <FormCheckboxList
+                            title="Quos fugiat assumenda dolore optio est, corporis sit similique ?"
+                            items={[
+                                'Perspiciatis amet',
+                                'Quibusdam',
+                                'Recusandae sit',
+                                'Consectetur',
+                            ]}
+                            name="choices"
+                            register={register('choices')}
+                            errors={errors['choices']}
+                        />
                         <FormTextarea
                             htmlFor="message"
                             label="Message"

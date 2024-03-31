@@ -11,7 +11,7 @@ export default function FormSelect({
     required,
     className,
     wrapperClassName,
-    options = ['Option 1', 'Option 2', 'Option 3'],
+    options,
     register,
     errors,
 }: Select) {

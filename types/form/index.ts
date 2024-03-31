@@ -3,6 +3,9 @@ export type FormData = {
     firstname: string;
     lastname: string;
     email: string;
+    subject: string;
+    choices?: (string | undefined)[] | undefined;
+    // question: string;
     message: string;
 };
 
