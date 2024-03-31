@@ -2,6 +2,7 @@ import { Select } from '@/types/form/elements';
 import styles from '../../styles/modules/FormSelect.module.scss';
 import classNames from 'classnames';
 import Chevron from '../icons/Chevron';
+import { slugify } from '@/utils/string';
 
 export default function FormSelect({
     defaultValue,
@@ -40,14 +41,8 @@ export default function FormSelect({
                         </option>
                     )}
                     {!defaultValue && <option value="" disabled></option>}
-                    {options?.map((option, index) => (
-                        <option
-                            key={`${option
-                                .trim()
-                                .replace(/\s+/g, '-')
-                                .toLowerCase()}-${index}`}
-                            value={option}
-                        >
+                    {options?.map((option) => (
+                        <option key={slugify(option)} value={option}>
                             {option}
                         </option>
                     ))}
