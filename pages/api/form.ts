@@ -33,13 +33,13 @@ export default async function handler(
         if (validReCaptcha)
             /* Sends email */
             try {
-                const emailTemplate = (await getEmailTemplateFile(
+                const emailTemplate = await getEmailTemplateFile(
                     '/templates/email.html',
                     res,
-                )) as string;
+                );
 
                 await new Email(
-                    emailTemplate,
+                    emailTemplate as string,
                     'New form',
                     labels,
                     data,
