@@ -1,6 +1,7 @@
 import { CheckboxList } from '@/types/form/elements';
 import FormCheckbox from './FormCheckbox';
 import classNames from 'classnames';
+import { slugify } from '@/utils/string';
 
 export default function FormCheckboxList({
     title,
@@ -22,16 +23,10 @@ export default function FormCheckboxList({
             >
                 {items.map((item) => (
                     <FormCheckbox
-                        key={`${item
-                            .trim()
-                            .replace(/\s+/g, '-')
-                            .toLowerCase()}`}
-                        htmlFor={`${item
-                            .trim()
-                            .replace(/\s+/g, '-')
-                            .toLowerCase()}`}
+                        key={slugify(item)}
+                        htmlFor={slugify(item)}
                         label={item}
-                        id={`${item.trim().replace(/\s+/g, '-').toLowerCase()}`}
+                        id={slugify(item)}
                         value={item}
                         className="c-formElement--checkboxSvg"
                         register={register}
