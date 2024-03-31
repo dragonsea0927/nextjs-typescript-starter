@@ -1,12 +1,12 @@
 /* Form */
 export type FormData = {
-    firstname: string;
-    lastname: string;
-    email: string;
-    subject: string;
+    firstname?: string;
+    lastname?: string;
+    email?: string;
+    subject?: string;
     choices?: (string | undefined)[] | undefined;
     // question: string;
-    message: string;
+    message?: string;
 };
 
 export type Labels = {
