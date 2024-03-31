@@ -5,7 +5,7 @@ export type FormData = {
     email?: string;
     subject?: string;
     choices?: (string | undefined)[] | undefined;
-    // question: string;
+    question?: string;
     message?: string;
 };
 

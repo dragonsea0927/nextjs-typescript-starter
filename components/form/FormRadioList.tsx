@@ -4,14 +4,9 @@ import classNames from 'classnames';
 
 export default function FormRadioList({
     title,
-    items = [
-        'Temporibus nesciunt',
-        'Exercitationem',
-        'Velit eveniet',
-        'Quaerat',
-    ],
+    items,
     className,
-    name,
+    htmlFor,
     register,
     errors,
 }: RadioList) {
@@ -37,14 +32,15 @@ export default function FormRadioList({
                             .toLowerCase()}`}
                         label={item}
                         id={`${item.trim().replace(/\s+/g, '-').toLowerCase()}`}
-                        name={name}
                         value={item}
                         className="c-formElement--radio"
                         register={register}
                     />
                 ))}
             </div>
-            {errors?.message && <label htmlFor={name}>{errors?.message}</label>}
+            {errors?.message && (
+                <label htmlFor={htmlFor}>{errors?.message}</label>
+            )}
         </div>
     );
 }

@@ -6,7 +6,7 @@ export default function FormCheckboxList({
     title,
     items,
     className,
-    name,
+    htmlFor,
     register,
     errors,
 }: CheckboxList) {
@@ -38,7 +38,9 @@ export default function FormCheckboxList({
                     />
                 ))}
             </div>
-            {errors?.message && <label htmlFor={name}>{errors?.message}</label>}
+            {errors?.message && (
+                <label htmlFor={htmlFor}>{errors?.message}</label>
+            )}
         </div>
     );
 }

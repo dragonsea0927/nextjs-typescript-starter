@@ -45,7 +45,7 @@ export type CheckboxList = {
     title: string;
     items: string[];
     className?: string;
-    name: string;
+    htmlFor: string;
     register: UseFormRegisterReturn;
     errors: Merge<FieldError, (FieldError | undefined)[]> | undefined;
 };
@@ -63,7 +63,7 @@ export type RadioList = {
     title: string;
     items: string[];
     className?: string;
-    name: string;
+    htmlFor: string;
     register: UseFormRegisterReturn;
     errors: FieldError | undefined;
 };

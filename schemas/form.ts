@@ -21,6 +21,7 @@ const getFormSchema = () => {
         choices: array()
             .of(string())
             .min(1, 'Please select one of these choices'),
+        question: string().required('Please select one of these answers'),
         message: string().required('This field is required'),
     });
 

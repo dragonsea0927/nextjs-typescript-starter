@@ -11,6 +11,7 @@ import FormInput from './FormInput';
 import FormTextarea from './FormTextarea';
 import FormSelect from './FormSelect';
 import FormCheckboxList from './FormCheckboxList';
+import FormRadioList from './FormRadioList';
 import FormRecaptchaNote from './FormRecaptchaNote';
 import Button from '../Button';
 import { toast, ToastContainer, Zoom } from 'react-toastify';
@@ -54,7 +55,7 @@ export default function Form() {
             email: '',
             subject: '',
             choices: [],
-            // question: '',
+            question: '',
             message: '',
         },
         resolver: yupResolver(formSchema),
@@ -190,9 +191,21 @@ export default function Form() {
                                 'Recusandae sit',
                                 'Consectetur',
                             ]}
-                            name="choices"
+                            htmlFor="choices"
                             register={register('choices')}
                             errors={errors['choices']}
+                        />
+                        <FormRadioList
+                            title="Quos fugiat assumenda dolore optio est, corporis sit similique ?"
+                            items={[
+                                'Temporibus nesciunt',
+                                'Exercitationem',
+                                'Velit eveniet',
+                                'Quaerat',
+                            ]}
+                            htmlFor="question"
+                            register={register('question')}
+                            errors={errors['question']}
                         />
                         <FormTextarea
                             htmlFor="message"
