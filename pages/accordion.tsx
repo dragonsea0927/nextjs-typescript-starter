@@ -117,7 +117,32 @@ export default function AccordionPage({}: InferGetStaticPropsType<
                             accordion
                         </p>
                     </div>
-                    Nested accordion
+                    <Accordion>
+                        {items.map(({ header }, i) => (
+                            <AccordionItem
+                                header={header}
+                                headingClassName="h6"
+                                id={i}
+                                key={i}
+                            >
+                                <Accordion>
+                                    {items.map(({ header, content }, i) => (
+                                        <AccordionItem
+                                            header={header}
+                                            headingTag={'h4'}
+                                            headingClassName="h6"
+                                            id={i}
+                                            key={i}
+                                        >
+                                            <div className="o-wysiwyg">
+                                                <p>{content}</p>
+                                            </div>
+                                        </AccordionItem>
+                                    ))}
+                                </Accordion>
+                            </AccordionItem>
+                        ))}
+                    </Accordion>
                 </div>
             </div>
         </>
