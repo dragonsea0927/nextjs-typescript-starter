@@ -27,6 +27,15 @@ export default function MobileNavigation() {
                                     <ul>
                                         <li>
                                             <NavItem
+                                                href="/accordion"
+                                                title="Accordion"
+                                                className={
+                                                    styles['is-current-page']
+                                                }
+                                            />
+                                        </li>
+                                        <li>
+                                            <NavItem
                                                 href="/form"
                                                 title="Form"
                                                 className={
