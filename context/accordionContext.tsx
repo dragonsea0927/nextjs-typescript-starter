@@ -29,7 +29,6 @@ interface AccordionContextType {
 }
 
 const AccordionContext = createContext<AccordionContextType>({
-    // items: new Map(),
     items: null,
     setItem: () => null,
     deleteItem: () => false,
@@ -151,7 +150,6 @@ export function AccordionContextProvider({
 export function useAccordionContext() {
     const context = useContext(AccordionContext);
 
-    // if (process.env.NODE_ENV !== 'production' && !context.items.size)
     if (process.env.NODE_ENV !== 'production' && !context.items)
         throw new Error('AccordionItem must be used within an Accordion');
 
