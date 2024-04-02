@@ -1,11 +1,12 @@
 import { GetStaticProps, InferGetStaticPropsType } from 'next';
 import { MetaDataProps } from '@/types/components/global';
 import BasicHeader from '@/components/BasicHeader';
+import Accordion from '@/components/accordion/Accordion';
+import AccordionItem from '@/components/accordion/AccordionItem';
 
 export default function AccordionPage({}: InferGetStaticPropsType<
     typeof getStaticProps
 >) {
-    // eslint-disable-next-line @typescript-eslint/no-unused-vars
     const items = [
         {
             header: 'What is Lorem Ipsum?',
@@ -37,7 +38,20 @@ export default function AccordionPage({}: InferGetStaticPropsType<
                             <strong>Accordion</strong> component.
                         </p>
                     </div>
-                    Accordion
+                    <Accordion>
+                        {items.map(({ header, content }, i) => (
+                            <AccordionItem
+                                header={header}
+                                headingClassName="h6"
+                                id={i}
+                                key={i}
+                            >
+                                <div className="o-wysiwyg">
+                                    <p>{content}</p>
+                                </div>
+                            </AccordionItem>
+                        ))}
+                    </Accordion>
                 </div>
             </div>
             <div className="u-spacing--responsive--bottom">

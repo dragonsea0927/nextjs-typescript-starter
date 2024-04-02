@@ -4,6 +4,7 @@ import ScrollTrigger from 'gsap/dist/ScrollTrigger';
 import {
     Dispatch,
     MutableRefObject,
+    RefObject,
     SetStateAction,
     createContext,
     useCallback,
@@ -16,19 +17,20 @@ import {
 interface Accordion {
     id: number;
     expanded: boolean;
-    container: MutableRefObject<HTMLDivElement>;
-    content: MutableRefObject<HTMLDivElement>;
+    container: RefObject<HTMLDivElement>;
+    content: RefObject<HTMLDivElement>;
 }
 
 interface AccordionContextType {
-    items: Map<number, Accordion>;
+    items: Map<number, Accordion> | null;
     setItem: (accordion: Accordion) => void;
     deleteItem: (id: number) => boolean;
     toggle: (accordion: Accordion) => void;
 }
 
 const AccordionContext = createContext<AccordionContextType>({
-    items: new Map(),
+    // items: new Map(),
+    items: null,
     setItem: () => null,
     deleteItem: () => false,
     toggle: () => null,
@@ -52,7 +54,7 @@ const updateItemHeight = (accordion: Accordion) => {
     if (expanded) {
         gsap.to(container.current, {
             duration: 0.45,
-            height: content.current.getBoundingClientRect().height,
+            height: content.current?.getBoundingClientRect().height,
             opacity: 1,
             ease: 'expo.inOut',
             onComplete: () => {
@@ -105,8 +107,7 @@ export function AccordionContextProvider({
 
         if (!itemObj) {
             process.env.NODE_ENV !== 'production' &&
-                console.error(`[AccordionItem] invalid key: ${'Key'}`);
-            // console.error(`[AccordionItem] invalid key: ${key}`);
+                console.error(`[AccordionItem] invalid key: ${id}`);
             return;
         }
         if (typeof expanded !== 'boolean')
@@ -150,6 +151,7 @@ export function AccordionContextProvider({
 export function useAccordionContext() {
     const context = useContext(AccordionContext);
 
+    // if (process.env.NODE_ENV !== 'production' && !context.items.size)
     if (process.env.NODE_ENV !== 'production' && !context.items)
         throw new Error('AccordionItem must be used within an Accordion');
 
@@ -164,11 +166,11 @@ export default function useAccordionItem({
 }: {
     id: number;
     initialExpanded: boolean;
-    container: MutableRefObject<HTMLDivElement>;
-    content: MutableRefObject<HTMLDivElement>;
+    container: RefObject<HTMLDivElement>;
+    content: RefObject<HTMLDivElement>;
 }) {
     const { items, setItem, deleteItem, toggle } = useAccordionContext();
-    const currentItem = items.get(id);
+    const currentItem = items?.get(id);
     const initialState = initialExpanded ? initialExpanded : false;
 
     useEffect(() => {
