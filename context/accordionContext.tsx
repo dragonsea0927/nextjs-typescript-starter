@@ -1,9 +1,9 @@
+import { AccordionProps } from '@/types/components/accordion';
 import gsap from 'gsap';
 import ScrollTrigger from 'gsap/dist/ScrollTrigger';
 import {
     Dispatch,
     MutableRefObject,
-    ReactNode,
     SetStateAction,
     createContext,
     useCallback,
@@ -76,10 +76,7 @@ const updateItemHeight = (accordion: Accordion) => {
 export function AccordionContextProvider({
     children,
     allowMultiple,
-}: {
-    children: ReactNode;
-    allowMultiple: boolean;
-}) {
+}: AccordionProps) {
     const [items, setItems] = useState(new Map<number, Accordion>());
     const latestItems = useRef(items);
 
