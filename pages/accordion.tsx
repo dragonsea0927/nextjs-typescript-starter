@@ -64,7 +64,20 @@ export default function AccordionPage({}: InferGetStaticPropsType<
                             <strong>Accordion</strong> component.
                         </p>
                     </div>
-                    Acoordion multiple
+                    <Accordion allowMultiple>
+                        {items.map(({ header, content }, i) => (
+                            <AccordionItem
+                                header={header}
+                                headingClassName="h6"
+                                id={i}
+                                key={i}
+                            >
+                                <div className="o-wysiwyg">
+                                    <p>{content}</p>
+                                </div>
+                            </AccordionItem>
+                        ))}
+                    </Accordion>
                 </div>
             </div>
             <div className="u-spacing--responsive--bottom">
