@@ -91,7 +91,21 @@ export default function AccordionPage({}: InferGetStaticPropsType<
                             example, the first item is expanded on mount.
                         </p>
                     </div>
-                    Acoordion with initial expanded
+                    <Accordion>
+                        {items.map(({ header, content }, i) => (
+                            <AccordionItem
+                                header={header}
+                                headingClassName="h6"
+                                id={i}
+                                key={i}
+                                initialExpanded={i === 0 ? true : false}
+                            >
+                                <div className="o-wysiwyg">
+                                    <p>{content}</p>
+                                </div>
+                            </AccordionItem>
+                        ))}
+                    </Accordion>
                 </div>
             </div>
             <div className="u-spacing--responsive--bottom">
