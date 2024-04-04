@@ -36,7 +36,7 @@ const NavigationContext = createContext<NavigationContextType>({
     open: false,
     sticky: false,
     hidden: false,
-    toggle: () => null,
+    toggle: () => {},
     currentRoute: '',
     setCurrentRoute: () => {},
 });

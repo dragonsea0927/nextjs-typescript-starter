@@ -30,9 +30,9 @@ interface AccordionContextType {
 
 const AccordionContext = createContext<AccordionContextType>({
     items: null,
-    setItem: () => null,
+    setItem: () => {},
     deleteItem: () => false,
-    toggle: () => null,
+    toggle: () => {},
 });
 
 const updateItem = (
