@@ -2,11 +2,13 @@
 import { GetStaticProps, InferGetStaticPropsType } from 'next';
 import { MetaDataProps } from '@/types/components/global';
 import BasicHeader from '@/components/BasicHeader';
+import Image from 'next/image';
 import ShuffleTextInOut from '@/components/gsap/ShuffleTextInOut';
 import TranslateInOut from '@/components/gsap/TranslateInOut';
 import FadeInOut from '@/components/gsap/FadeInOut';
 import ScaleInOut from '@/components/gsap/ScaleInOut';
 import RotateInOut from '@/components/gsap/RotateInOut';
+import ClipPathInOut from '@/components/gsap/ClipPathInOut';
 import RotateInOut3D from '@/components/gsap/RotateInOut3D';
 import ImplodeExplodeInOut from '@/components/gsap/ImplodeExplodeInOut';
 
@@ -230,6 +232,37 @@ export default function gsap({}: InferGetStaticPropsType<
                     >
                         <h2 id="custom-animations">Custom animations</h2>
                     </ShuffleTextInOut>
+                    <div className="o-wysiwyg">
+                        <h3 className="h5">ClipPathInOut</h3>
+                        <p>
+                            fade="false"
+                            <br />
+                            delay="0.4"
+                            <br />
+                            clipPath="inset(0% 100% 0% 0%)"
+                            <br />
+                            watch
+                        </p>
+                    </div>
+                    <div className="u-spacing--responsive">
+                        <ClipPathInOut
+                            fade={false}
+                            delay={0.4}
+                            clipPath="inset(0% 100% 0% 0%)"
+                            watch
+                        >
+                            <div>
+                                <picture>
+                                    <Image
+                                        alt="image"
+                                        src="/static/react.png"
+                                        width={1160}
+                                        height={663}
+                                    />
+                                </picture>
+                            </div>
+                        </ClipPathInOut>
+                    </div>
                     <div className="c-rotateInOut3D">
                         <div className="o-wysiwyg">
                             <h3 className="h5">RotateInOut3D</h3>
