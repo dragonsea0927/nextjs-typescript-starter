@@ -14,10 +14,12 @@ declare global {
 
 type SetValue<T> = Dispatch<SetStateAction<T>>;
 
+const IS_SERVER = typeof window === 'undefined';
+
 export default function useLocalStorage<T>(
     key: string,
     initialValue: T,
-): [T, SetValue<T>] {
+): [T, SetValue<T>, () => void] {
     /* State to store the value */
     const [storedValue, setStoredValue] = useState<T>(initialValue);
 
@@ -27,7 +29,7 @@ export default function useLocalStorage<T>(
      */
     const readValue = useCallback(() => {
         /* Prevents build error "window is undefined" but keeps working */
-        if (typeof window === 'undefined') {
+        if (IS_SERVER) {
             return initialValue;
         }
 
@@ -45,7 +47,7 @@ export default function useLocalStorage<T>(
      */
     const setValue: SetValue<T> = (value) => {
         /* Prevents build error "window is undefined" but keeps working */
-        if (typeof window === 'undefined') {
+        if (IS_SERVER) {
             console.warn(
                 `Tried setting localStorage key "${key}" even though environment is not a client`,
             );
@@ -65,6 +67,30 @@ export default function useLocalStorage<T>(
         } catch (error) {
             console.warn(`Error setting localStorage key "${key}":`, error);
         }
+    };
+
+    /**
+     * Removes the value from localStorage
+     */
+    const removeValue = () => {
+        // Prevent build error "window is undefined" but keeps working
+        if (IS_SERVER) {
+            console.warn(
+                `Tried removing localStorage key "${key}" even though environment is not a client`,
+            );
+        }
+
+        const defaultValue =
+            initialValue instanceof Function ? initialValue() : initialValue;
+
+        /* Remove the key from local storage */
+        window.localStorage.removeItem(key);
+
+        /* Save state with default value */
+        setStoredValue(defaultValue);
+
+        /* We dispatch a custom event so every similar useLocalStorage hook is notified */
+        window.dispatchEvent(new StorageEvent('local-storage', { key }));
     };
 
     useEffect(() => {
@@ -101,7 +127,7 @@ export default function useLocalStorage<T>(
         // eslint-disable-next-line react-hooks/exhaustive-deps
     }, []);
 
-    return [storedValue, setValue];
+    return [storedValue, setValue, removeValue];
 }
 
 /**
