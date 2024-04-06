@@ -63,7 +63,7 @@ export default function useLocalStorage<T>(
             setStoredValue(newValue);
 
             /* We dispatch a custom event so every useLocalStorage hook are notified */
-            window.dispatchEvent(new Event('local-storage'));
+            window.dispatchEvent(new StorageEvent('local-storage', { key }));
         } catch (error) {
             console.warn(`Error setting localStorage key "${key}":`, error);
         }
@@ -101,7 +101,7 @@ export default function useLocalStorage<T>(
     const handleStorageChange = useCallback(
         (event: StorageEvent | CustomEvent) => {
             if (
-                (event as StorageEvent)?.key &&
+                (event as StorageEvent).key &&
                 (event as StorageEvent).key !== key
             ) {
                 return;

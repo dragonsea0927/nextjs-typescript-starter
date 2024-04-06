@@ -14,10 +14,12 @@ declare global {
 
 type SetValue<T> = Dispatch<SetStateAction<T>>;
 
+const IS_SERVER = typeof window === 'undefined';
+
 export function useSessionStorage<T>(
     key: string,
     initialValue: T,
-): [T, SetValue<T>] {
+): [T, SetValue<T>, () => void] {
     /* State to store the value */
     const [storedValue, setStoredValue] = useState<T>(initialValue);
 
@@ -27,7 +29,7 @@ export function useSessionStorage<T>(
      */
     const readValue = useCallback((): T => {
         /* Prevents build error "window is undefined" but keeps working */
-        if (typeof window === 'undefined') {
+        if (IS_SERVER) {
             return initialValue;
         }
 
@@ -45,7 +47,7 @@ export function useSessionStorage<T>(
      */
     const setValue: SetValue<T> = (value) => {
         /* Prevents build error "window is undefined" but keeps working */
-        if (typeof window == 'undefined') {
+        if (IS_SERVER) {
             console.warn(
                 `Tried setting sessionStorage key "${key}" even though environment is not a client`,
             );
@@ -67,6 +69,30 @@ export function useSessionStorage<T>(
         }
     };
 
+    /**
+     * Removes the value from sessionStorage
+     */
+    const removeValue = () => {
+        /* Prevent build error "window is undefined" but keeps working */
+        if (IS_SERVER) {
+            console.warn(
+                `Tried removing sessionStorage key "${key}" even though environment is not a client`,
+            );
+        }
+
+        const defaultValue =
+            initialValue instanceof Function ? initialValue() : initialValue;
+
+        /* Remove the key from session storage */
+        window.sessionStorage.removeItem(key);
+
+        /* Save state with default value */
+        setStoredValue(defaultValue);
+
+        /* We dispatch a custom event so every similar useSessionStorage hook is notified */
+        window.dispatchEvent(new Event('session-storage'));
+    };
+
     useEffect(() => {
         setStoredValue(readValue());
         // eslint-disable-next-line react-hooks/exhaustive-deps
@@ -75,7 +101,7 @@ export function useSessionStorage<T>(
     const handleStorageChange = useCallback(
         (event: StorageEvent | CustomEvent) => {
             if (
-                (event as StorageEvent)?.key &&
+                (event as StorageEvent).key &&
                 (event as StorageEvent).key !== key
             ) {
                 return;
@@ -97,7 +123,7 @@ export function useSessionStorage<T>(
         // eslint-disable-next-line react-hooks/exhaustive-deps
     }, []);
 
-    return [storedValue, setValue];
+    return [storedValue, setValue, removeValue];
 }
 
 /**
