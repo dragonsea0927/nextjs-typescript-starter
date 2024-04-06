@@ -17,6 +17,7 @@ export default function Home() {
     const [locked, setLocked] = useLockedScroll(false);
     const { currentURL } = useWindowLocation();
     const isMounted = useIsMounted();
+
     return (
         <>
             <BasicHeader
