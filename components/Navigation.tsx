@@ -51,6 +51,15 @@ export default function Navigation() {
                                     <ul>
                                         <li>
                                             <NavItem
+                                                href="/gsap"
+                                                title="GSAP"
+                                                className={
+                                                    styles['is-current-page']
+                                                }
+                                            />
+                                        </li>
+                                        <li>
+                                            <NavItem
                                                 href="/accordion"
                                                 title="Accordion"
                                                 className={
