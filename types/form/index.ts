@@ -9,6 +9,15 @@ export type FormData = {
     message?: string;
 };
 
+export type UploadFormData = {
+    firstname?: string;
+    lastname?: string;
+    email?: string;
+    // resume?: File;
+    // coverletter?: File;
+    message?: string;
+};
+
 export type Labels = {
     [key: string]: string;
 };

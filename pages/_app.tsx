@@ -80,6 +80,10 @@ export default function App({ Component, pageProps }: AppProps) {
             href: '/form',
             title: 'Form',
         },
+        {
+            href: '/upload',
+            title: 'File upload form',
+        },
     ];
 
     /* Removes focus from next/link element after page change */
