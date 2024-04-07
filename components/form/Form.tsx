@@ -14,6 +14,9 @@ import FormCheckboxList from './FormCheckboxList';
 import FormRadioList from './FormRadioList';
 import FormRecaptchaNote from './FormRecaptchaNote';
 import Button from '../Button';
+import TranslateInOut from '../gsap/TranslateInOut';
+import FadeInOut from '../gsap/FadeInOut';
+import ScaleInOut from '../gsap/ScaleInOut';
 import { toast, ToastContainer, Zoom } from 'react-toastify';
 
 const labels: Labels = {
@@ -144,89 +147,158 @@ export default function Form() {
                 <div className="o-container--small">
                     <div className={styles['c-form__inner']}>
                         <div className={styles['c-form__row']}>
-                            <FormInput
-                                htmlFor="firstname"
-                                label="Firstname"
-                                id="firstname"
-                                required={true}
-                                className="c-formElement--bordered"
-                                register={register('firstname')}
-                                errors={errors['firstname']}
-                            />
-                            <FormInput
-                                htmlFor="lastname"
-                                label="Lastname"
-                                id="lastname"
-                                required={true}
-                                className="c-formElement--bordered"
-                                register={register('lastname')}
-                                errors={errors['lastname']}
-                            />
-                            <FormInput
-                                htmlFor="email"
-                                label="Email"
-                                type="email"
-                                id="email"
-                                required={true}
-                                className="c-formElement--bordered"
-                                register={register('email')}
-                                errors={errors['email']}
-                            />
-                            <FormSelect
-                                htmlFor="subject"
-                                label="Subject"
-                                id="subject"
-                                options={['Option 1', 'Option 2', 'Option 3']}
-                                required={true}
-                                className="c-formElement--select--bordered"
-                                register={register('subject')}
-                                errors={errors['subject']}
-                            />
+                            <TranslateInOut
+                                delay={0.1}
+                                y="100%"
+                                start="-100% bottom"
+                                end="top top"
+                                watch
+                            >
+                                <FormInput
+                                    htmlFor="firstname"
+                                    label="Firstname"
+                                    id="firstname"
+                                    required={true}
+                                    className="c-formElement--bordered"
+                                    register={register('firstname')}
+                                    errors={errors['firstname']}
+                                />
+                            </TranslateInOut>
+                            <TranslateInOut
+                                delay={0.15}
+                                y="100%"
+                                start="-100% bottom"
+                                end="top top"
+                                watch
+                            >
+                                <FormInput
+                                    htmlFor="lastname"
+                                    label="Lastname"
+                                    id="lastname"
+                                    required={true}
+                                    className="c-formElement--bordered"
+                                    register={register('lastname')}
+                                    errors={errors['lastname']}
+                                />
+                            </TranslateInOut>
+                            <TranslateInOut
+                                delay={0.2}
+                                y="100%"
+                                start="-100% bottom"
+                                end="top top"
+                                watch
+                            >
+                                <FormInput
+                                    htmlFor="email"
+                                    label="Email"
+                                    type="email"
+                                    id="email"
+                                    required={true}
+                                    className="c-formElement--bordered"
+                                    register={register('email')}
+                                    errors={errors['email']}
+                                />
+                            </TranslateInOut>
+                            <TranslateInOut
+                                delay={0.25}
+                                y="100%"
+                                start="-100% bottom"
+                                end="top top"
+                                watch
+                            >
+                                <FormSelect
+                                    htmlFor="subject"
+                                    label="Subject"
+                                    id="subject"
+                                    options={[
+                                        'Option 1',
+                                        'Option 2',
+                                        'Option 3',
+                                    ]}
+                                    required={true}
+                                    className="c-formElement--select--bordered"
+                                    register={register('subject')}
+                                    errors={errors['subject']}
+                                />
+                            </TranslateInOut>
                         </div>
-                        <FormCheckboxList
-                            title="Quos fugiat assumenda dolore optio est, corporis sit similique ?"
-                            items={[
-                                'Perspiciatis amet',
-                                'Quibusdam',
-                                'Recusandae sit',
-                                'Consectetur',
-                            ]}
-                            htmlFor="choices"
-                            register={register('choices')}
-                            errors={errors['choices']}
-                        />
-                        <FormRadioList
-                            title="Quos fugiat assumenda dolore optio est, corporis sit similique ?"
-                            items={[
-                                'Temporibus nesciunt',
-                                'Exercitationem',
-                                'Velit eveniet',
-                                'Quaerat',
-                            ]}
-                            htmlFor="question"
-                            register={register('question')}
-                            errors={errors['question']}
-                        />
-                        <FormTextarea
-                            htmlFor="message"
-                            label="Message"
-                            id="message"
-                            required={true}
-                            className="c-formElement--bordered"
-                            register={register('message')}
-                            errors={errors['message']}
-                        />
-                        <FormRecaptchaNote />
-                        <div className={styles['c-form__btn']}>
-                            <Button
-                                label="Send"
-                                className="c-btn"
-                                wrapperClassName={classNames({
-                                    'c-formElement--submit': isSubmitting,
-                                })}
-                                type="submit"
-                                disabled={isSubmitting}
+                        <TranslateInOut
+                            delay={0.3}
+                            y="100%"
+                            start="-100% bottom"
+                            end="top top"
+                            watch
+                        >
+                            <FormCheckboxList
+                                title="Quos fugiat assumenda dolore optio est, corporis sit similique ?"
+                                items={[
+                                    'Perspiciatis amet',
+                                    'Quibusdam',
+                                    'Recusandae sit',
+                                    'Consectetur',
+                                ]}
+                                htmlFor="choices"
+                                register={register('choices')}
+                                errors={errors['choices']}
                             />
+                        </TranslateInOut>
+                        <TranslateInOut
+                            delay={0.35}
+                            y="100%"
+                            start="-100% bottom"
+                            end="top top"
+                            watch
+                        >
+                            <FormRadioList
+                                title="Quos fugiat assumenda dolore optio est, corporis sit similique ?"
+                                items={[
+                                    'Temporibus nesciunt',
+                                    'Exercitationem',
+                                    'Velit eveniet',
+                                    'Quaerat',
+                                ]}
+                                htmlFor="question"
+                                register={register('question')}
+                                errors={errors['question']}
+                            />
+                        </TranslateInOut>
+                        <TranslateInOut
+                            delay={0.4}
+                            y="100%"
+                            start="-100% bottom"
+                            end="top top"
+                            watch
+                        >
+                            <FormTextarea
+                                htmlFor="message"
+                                label="Message"
+                                id="message"
+                                required={true}
+                                className="c-formElement--bordered"
+                                register={register('message')}
+                                errors={errors['message']}
+                            />
+                        </TranslateInOut>
+                        <FadeInOut delay={0.25} watch>
+                            <FormRecaptchaNote />
+                        </FadeInOut>
+                        <div className={styles['c-form__btn']}>
+                            <ScaleInOut
+                                durationIn={1}
+                                delay={0.25}
+                                ease="elastic.out"
+                                watch
+                            >
+                                <Button
+                                    label="Send"
+                                    className="c-btn"
+                                    wrapperClassName={classNames({
+                                        'c-formElement--submit': isSubmitting,
+                                    })}
+                                    type="submit"
+                                    disabled={isSubmitting}
+                                />
+                            </ScaleInOut>
                         </div>
                     </div>
                 </div>
