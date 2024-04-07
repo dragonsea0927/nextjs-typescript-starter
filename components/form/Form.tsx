@@ -3,6 +3,7 @@ import styles from '../../styles/modules/Form.module.scss';
 import 'react-toastify/dist/ReactToastify.css';
 import { useForm } from 'react-hook-form';
 import useIsMounted from '@/hooks/useIsMounted';
+import { useTheme } from 'next-themes';
 import { useGoogleReCaptcha } from 'react-google-recaptcha-v3';
 import { formSchema } from '@/schemas/form';
 import { yupResolver } from '@hookform/resolvers/yup';
@@ -17,7 +18,7 @@ import Button from '../Button';
 import TranslateInOut from '../gsap/TranslateInOut';
 import FadeInOut from '../gsap/FadeInOut';
 import ScaleInOut from '../gsap/ScaleInOut';
-import { toast, ToastContainer, Zoom } from 'react-toastify';
+import { Theme, toast, ToastContainer, Zoom } from 'react-toastify';
 
 const labels: Labels = {
     firstname: 'Firstname',
@@ -64,6 +65,7 @@ export default function Form() {
         resolver: yupResolver(formSchema),
     });
     const isMounted = useIsMounted();
+    const { resolvedTheme } = useTheme();
     const { executeRecaptcha } = useGoogleReCaptcha();
 
     const submitForm = async (data: FormData, recaptchaToken: string) => {
@@ -307,6 +309,7 @@ export default function Form() {
                 <ToastContainer
                     position={toast.POSITION.BOTTOM_CENTER}
                     transition={Zoom}
+                    theme={resolvedTheme as Theme}
                     className="c-toastify"
                 />
             )}
