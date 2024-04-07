@@ -54,6 +54,8 @@ export default function AccordionPage({}: InferGetStaticPropsType<
                                 headingClassName="h6"
                                 id={i}
                                 key={i}
+                                delay={items.length / 10 + i / 10}
+                                delayOut={items.length / 10 - i / 10}
                             >
                                 <div className="o-wysiwyg">
                                     <p>{content}</p>
@@ -93,6 +95,10 @@ export default function AccordionPage({}: InferGetStaticPropsType<
                                 headingClassName="h6"
                                 id={i}
                                 key={i}
+                                delay={0.3}
+                                start="-100% bottom"
+                                end="top top"
+                                watch
                             >
                                 <div className="o-wysiwyg">
                                     <p>{content}</p>
@@ -132,6 +138,10 @@ export default function AccordionPage({}: InferGetStaticPropsType<
                                 id={i}
                                 key={i}
                                 initialExpanded={i === 0 ? true : false}
+                                delay={0.3}
+                                start="-100% bottom"
+                                end="top top"
+                                watch
                             >
                                 <div className="o-wysiwyg">
                                     <p>{content}</p>
@@ -167,6 +177,10 @@ export default function AccordionPage({}: InferGetStaticPropsType<
                                 headingClassName="h6"
                                 id={i}
                                 key={i}
+                                delay={0.3}
+                                start="-100% bottom"
+                                end="top top"
+                                watch
                             >
                                 <Accordion>
                                     {items.map(({ header, content }, i) => (
