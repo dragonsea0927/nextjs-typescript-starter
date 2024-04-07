@@ -4,6 +4,8 @@ import useLockedScroll from '@/hooks/useLockedScroll';
 import useScrollbar from '@/hooks/useScrollbar';
 import useWindowLocation from '@/hooks/useWindowLocation';
 import useWindowSize from '@/hooks/useWindowSize';
+import useSessionStorage from '@/hooks/useSessionStorage';
+import useLocalStorage from '@/hooks/useLocalStorage';
 import BasicHeader from '@/components/BasicHeader';
 import Button from '@/components/Button';
 import useDemoModal from '@/components/modal/DemoModal';
@@ -18,6 +20,12 @@ export default function Home() {
     const [sectionRef, size] = useElementSize();
     const [locked, setLocked] = useLockedScroll(false);
     const { currentURL } = useWindowLocation();
+    const [valueSession, setValueSession, removeValueSession] =
+        useSessionStorage('session-key', 0);
+    const [valueLocal, setValueLocal, removeValueLocal] = useLocalStorage(
+        'local-key',
+        0,
+    );
     const isMounted = useIsMounted();
 
     return (
@@ -254,6 +262,80 @@ export default function Home() {
                                 <h3 className="h5">useIsMounted</h3>
                                 <div className="o-wysiwyg">
                                     <p>isMounted: {String(isMounted())}</p>
+                                </div>
+                            </div>
+                        </RotateInOut3D>
+                        <RotateInOut3D
+                            durationIn={1 + Math.random()}
+                            y="265px"
+                            start="-265px 90%"
+                            end="-265px top"
+                            watch
+                        >
+                            <div className="c-gridSection__item">
+                                <h3 className="h5">useSessionStorage</h3>
+                                <div className="o-wysiwyg">
+                                    <p>Value: {String(valueSession)}</p>
+                                    <Button
+                                        label={'Increment'}
+                                        onClick={() =>
+                                            setValueSession(
+                                                (x: number) => x + 1,
+                                            )
+                                        }
+                                        className="c-btn"
+                                    />
+                                    <br />
+                                    <Button
+                                        label={'Decrement'}
+                                        onClick={() =>
+                                            setValueSession(
+                                                (x: number) => x - 1,
+                                            )
+                                        }
+                                        className="c-btn"
+                                    />
+                                    <br />
+                                    <Button
+                                        label={'Reset'}
+                                        onClick={() => removeValueSession()}
+                                        className="c-btn"
+                                    />
+                                </div>
+                            </div>
+                        </RotateInOut3D>
+                        <RotateInOut3D
+                            durationIn={1 + Math.random()}
+                            y="265px"
+                            start="-265px 90%"
+                            end="-265px top"
+                            watch
+                        >
+                            <div className="c-gridSection__item">
+                                <h3 className="h5">useLocalStorage</h3>
+                                <div className="o-wysiwyg">
+                                    <p>Value: {String(valueLocal)}</p>
+                                    <Button
+                                        label={'Increment'}
+                                        onClick={() =>
+                                            setValueLocal((x: number) => x + 1)
+                                        }
+                                        className="c-btn"
+                                    />
+                                    <br />
+                                    <Button
+                                        label={'Decrement'}
+                                        onClick={() =>
+                                            setValueLocal((x: number) => x - 1)
+                                        }
+                                        className="c-btn"
+                                    />
+                                    <br />
+                                    <Button
+                                        label={'Reset'}
+                                        onClick={() => removeValueLocal()}
+                                        className="c-btn"
+                                    />
                                 </div>
                             </div>
                         </RotateInOut3D>

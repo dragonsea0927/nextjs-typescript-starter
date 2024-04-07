@@ -16,7 +16,7 @@ type SetValue<T> = Dispatch<SetStateAction<T>>;
 
 const IS_SERVER = typeof window === 'undefined';
 
-export function useSessionStorage<T>(
+export default function useSessionStorage<T>(
     key: string,
     initialValue: T,
 ): [T, SetValue<T>, () => void] {
