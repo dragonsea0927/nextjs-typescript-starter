@@ -7,6 +7,7 @@ import type { AppProps } from 'next/app';
 import { useEffect } from 'react';
 import { useRouter } from 'next/router';
 import useNextCssRemovalPrevention from '@/hooks/useNextCssRemovalPrevention';
+import { ThemeProvider } from 'next-themes';
 import { GoogleReCaptchaProvider } from 'react-google-recaptcha-v3';
 import { TransitionContextProvider } from '@/context/transitionContext';
 import { NavigationContextProvider } from '@/context/navigationContext';
@@ -91,7 +92,7 @@ export default function App({ Component, pageProps }: AppProps) {
     useNextCssRemovalPrevention();
 
     return (
-        <>
+        <ThemeProvider disableTransitionOnChange>
             <MetaData {...metaData} />
             <GoogleReCaptchaProvider
                 reCaptchaKey={process.env.NEXT_PUBLIC_RECAPTCHA_SITE_KEY}
@@ -118,6 +119,6 @@ export default function App({ Component, pageProps }: AppProps) {
                     </NavigationContextProvider>
                 </TransitionContextProvider>
             </GoogleReCaptchaProvider>
-        </>
+        </ThemeProvider>
     );
 }
