@@ -4,11 +4,10 @@ import classNames from 'classnames';
 import useNavigationContext from '@/context/navigationContext';
 
 export default function MobileNavigation() {
-    const { mobileNavRef, open, toggle } = useNavigationContext();
+    const { mobileNavRef, open } = useNavigationContext();
 
     return (
         <>
-            <Hamburger open={open} toggle={toggle} />
             {open && (
                 <nav
                     className={classNames(styles['c-mobileNav'], {
@@ -60,22 +59,5 @@ export default function MobileNavigation() {
                 </nav>
             )}
         </>
-    );
-}
-
-function Hamburger({ open, toggle }: { open: boolean; toggle: () => void }) {
-    return (
-        <button
-            className={classNames(styles['m-hamburger'], {
-                [styles['is-nav-active']]: open,
-            })}
-            type="button"
-            aria-label="Toggle menu"
-            onClick={toggle}
-        >
-            <div className={styles['m-hamburger__lines']}>
-                <span></span>
-            </div>
-        </button>
     );
 }

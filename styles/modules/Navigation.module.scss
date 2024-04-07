@@ -148,3 +148,85 @@
         }
     }
 }
+
+/* Toggler
+========================================================================== */
+
+.m-toggler {
+    position: relative;
+    width: 43px;
+    height: 43px;
+    order: 3;
+
+    &__lines {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        width: 33px;
+        height: 33px;
+        transform: translate(-50%, -50%);
+        transition: all 0.35s $ease-in;
+
+        span {
+            position: absolute;
+            top: 50%;
+            left: 0;
+            transform: translateY(-50%);
+            width: 100%;
+            height: 2px;
+            background: var(--body-text-color);
+            transition-timing-function: $ease-in;
+            transition-duration: 0.3s;
+
+            &:before,
+            &:after {
+                content: '';
+                display: block;
+                position: absolute;
+                top: -10px;
+                left: 0;
+                width: 100%;
+                height: 2px;
+                background: var(--body-text-color);
+                transition: top 0.1s $ease-in 0.25s, opacity 0.1s $ease-in;
+            }
+
+            &:after {
+                top: auto;
+                bottom: -10px;
+                transition: bottom 0.1s $ease-in 0.25s, transform 0.3s $ease-in;
+            }
+        }
+    }
+
+    /* states */
+    &.is-nav-active & {
+        &__lines {
+            span {
+                transition-delay: 0.3s;
+                transition-timing-function: $ease-in;
+                transform: rotate(225deg);
+
+                &:before {
+                    top: 0;
+                    transition: top 0.1s $ease-in, opacity 0.1s $ease-in 0.12s;
+                    opacity: 0;
+                }
+
+                &:after {
+                    bottom: 0;
+                    transition: bottom 0.1s $ease-in,
+                        transform 0.22s $ease-in 0.15s;
+                    transform: rotate(-90deg);
+                }
+            }
+        }
+    }
+
+    // **---------------------------------------------------**
+    // MEDIA QUERIES
+
+    @include mediaq('>LG') {
+        display: none;
+    }
+}

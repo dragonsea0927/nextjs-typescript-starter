@@ -7,6 +7,11 @@ export type MetaDataProps = {
 };
 
 /* Navigation */
+export type TogglerProps = {
+    open: boolean;
+    toggle: () => void;
+};
+
 export type NavItemProps = {
     href: string;
     title: string;

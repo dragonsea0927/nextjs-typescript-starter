@@ -1,3 +1,4 @@
+import { TogglerProps } from '@/types/components/global';
 import styles from '@/styles/modules/Navigation.module.scss';
 import Link from 'next/link';
 import useNavigationContext from '@/context/navigationContext';
@@ -8,7 +9,8 @@ import NavItem from './NavItem';
 import classNames from 'classnames';
 
 export default function Navigation() {
-    const { navigationRef, open, sticky, hidden } = useNavigationContext();
+    const { navigationRef, open, sticky, hidden, toggle } =
+        useNavigationContext();
     const [headerRef, { height }] = useElementSize();
 
     return (
@@ -36,6 +38,7 @@ export default function Navigation() {
                                 <Logo />
                             </Link>
                         </div>
+                        <Toggler open={open} toggle={toggle} />
                         <MobileNavigation />
                         <nav className={styles['c-navigation__nav']}>
                             <div
@@ -84,5 +87,22 @@ export default function Navigation() {
                 </div>
             </header>
         </>
+    );
+}
+
+function Toggler({ open, toggle }: TogglerProps) {
+    return (
+        <button
+            className={classNames(styles['m-toggler'], {
+                [styles['is-nav-active']]: open,
+            })}
+            type="button"
+            aria-label="Toggle menu"
+            onClick={toggle}
+        >
+            <div className={styles['m-toggler__lines']}>
+                <span></span>
+            </div>
+        </button>
     );
 }
