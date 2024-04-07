@@ -119,6 +119,8 @@
 
                             span {
                                 display: block;
+                                overflow: hidden;
+
                                 a {
                                     display: inline-block;
                                     @include font-size(18px);

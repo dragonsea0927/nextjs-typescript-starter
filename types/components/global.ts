@@ -1,3 +1,5 @@
+import { CSSProperties } from 'react';
+
 /* Meta data */
 export type MetaDataProps = {
     title?: string;
@@ -17,4 +19,5 @@ export type NavItemProps = {
     title: string;
     onClick?: () => void;
     className: string;
+    style?: CSSProperties;
 };
