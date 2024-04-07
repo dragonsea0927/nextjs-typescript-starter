@@ -1,4 +1,5 @@
 import { HTMLAttributes, ReactNode } from 'react';
+import { AnimationProperties } from '../animations/properties';
 
 /* Accordion props */
 export type AccordionProps = {
@@ -28,4 +29,4 @@ export type AccordionItem = {
     headingClassName?: string;
     id: number;
     initialExpanded?: boolean;
-};
+} & AnimationProperties;

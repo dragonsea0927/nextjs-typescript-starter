@@ -4,8 +4,11 @@ import {
     HeadingTag,
 } from '@/types/components/accordion';
 import styles from '@/styles/modules/AccordionItem.module.scss';
+import gsap from 'gsap';
 import React, { useId, useRef } from 'react';
 import useAccordionItem from '@/context/accordionContext';
+import useIsomorphicLayoutEffect from '@/hooks/useIsomorphicLayoutEffect';
+import useTransitionContext from '@/context/transitionContext';
 import { slugify } from '@/utils/string';
 import Chevron from '../icons/Chevron';
 import classNames from 'classnames';
@@ -17,6 +20,19 @@ export default function AccordionItem({
     headingClassName = '',
     id,
     initialExpanded = false,
+    durationIn = 0.5,
+    durationOut = 0.25,
+    delay = 0,
+    delayOut = 0,
+    ease = 'sine.out',
+    easeOut = 'sine.out',
+    outro,
+    skipOutro,
+    watch,
+    start = 'top bottom',
+    end = 'bottom top',
+    scrub = false,
+    markers,
 }: AccordionItem) {
     const element = useRef<HTMLLIElement>(null);
     const container = useRef<HTMLDivElement>(null);
@@ -29,9 +45,61 @@ export default function AccordionItem({
     });
     const buttonId = `${slugify(header)}-${useId()}`;
     const panelId = `${slugify(header)}-${useId()}`;
+    const { timeline } = useTransitionContext();
+    const from = {
+        opacity: 0,
+        transform: `translate(0, 100%)`,
+    };
+
+    useIsomorphicLayoutEffect(() => {
+        const scrollTrigger = watch
+            ? {
+                  scrollTrigger: {
+                      trigger: element.current,
+                      start,
+                      end,
+                      scrub,
+                      markers: markers,
+                  },
+              }
+            : {};
+
+        const ctx = gsap.context(() => {
+            /* Intro animation */
+            gsap.to(element.current, {
+                ease,
+                opacity: 1,
+                x: 0,
+                y: 0,
+                delay,
+                duration: durationIn,
+                ...scrollTrigger,
+            });
+
+            /* Outro animation */
+            if (!skipOutro) {
+                const outroProperties = outro ?? from;
+
+                timeline?.add(
+                    gsap.to(element.current, {
+                        ease: easeOut,
+                        ...outroProperties,
+                        delay: delayOut,
+                        duration: durationOut,
+                    }),
+                    0,
+                );
+            }
+        }, element);
+        return () => ctx.revert();
+    }, []);
 
     return (
-        <li ref={element} className={styles['c-accordions__item']}>
+        <li
+            ref={element}
+            className={styles['c-accordions__item']}
+            style={{ ...from }}
+        >
             <Heading
                 header={header}
                 headingTag={headingTag}

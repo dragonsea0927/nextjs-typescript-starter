@@ -3,6 +3,8 @@ import { MetaDataProps } from '@/types/components/global';
 import BasicHeader from '@/components/BasicHeader';
 import Accordion from '@/components/accordion/Accordion';
 import AccordionItem from '@/components/accordion/AccordionItem';
+import ShuffleTextInOut from '@/components/gsap/ShuffleTextInOut';
+import TranslateInOut from '@/components/gsap/TranslateInOut';
 
 export default function AccordionPage({}: InferGetStaticPropsType<
     typeof getStaticProps
@@ -30,13 +32,20 @@ export default function AccordionPage({}: InferGetStaticPropsType<
             <BasicHeader title="Accordion" />
             <div className="u-spacing--responsive--bottom">
                 <div className="o-container--small">
-                    <h2 id="usage">Usage</h2>
-                    <div className="o-wysiwyg">
-                        <p>
-                            An accordion is created by wrapping any number of{' '}
-                            <strong>AccordionItem</strong> components inside an{' '}
-                            <strong>Accordion</strong> component.
-                        </p>
+                    <ShuffleTextInOut delay={0.3} target="#usage">
+                        <h2 id="usage">Usage</h2>
+                    </ShuffleTextInOut>
+                    <div className="u-overflow--hidden">
+                        <TranslateInOut delay={0.4} y="100%">
+                            <div className="o-wysiwyg">
+                                <p>
+                                    An accordion is created by wrapping any
+                                    number of <strong>AccordionItem</strong>{' '}
+                                    components inside an{' '}
+                                    <strong>Accordion</strong> component.
+                                </p>
+                            </div>
+                        </TranslateInOut>
                     </div>
                     <Accordion>
                         {items.map(({ header, content }, i) => (
@@ -56,13 +65,26 @@ export default function AccordionPage({}: InferGetStaticPropsType<
             </div>
             <div className="u-spacing--responsive--bottom">
                 <div className="o-container--small">
-                    <h2 id="multiple">Allowing multiple</h2>
-                    <div className="o-wysiwyg">
-                        <p>
-                            To allow multiple accordion items to expand at once,
-                            set the <strong>allowMultiple</strong> prop of the{' '}
-                            <strong>Accordion</strong> component.
-                        </p>
+                    <ShuffleTextInOut delay={0.3} target="#multiple" watch>
+                        <h2 id="multiple">Allowing multiple</h2>
+                    </ShuffleTextInOut>
+                    <div className="u-overflow--hidden">
+                        <TranslateInOut
+                            delay={0.4}
+                            y="100%"
+                            start="-100% bottom"
+                            end="top top"
+                            watch
+                        >
+                            <div className="o-wysiwyg">
+                                <p>
+                                    To allow multiple accordion items to expand
+                                    at once, set the{' '}
+                                    <strong>allowMultiple</strong> prop of the{' '}
+                                    <strong>Accordion</strong> component.
+                                </p>
+                            </div>
+                        </TranslateInOut>
                     </div>
                     <Accordion allowMultiple>
                         {items.map(({ header, content }, i) => (
@@ -82,15 +104,26 @@ export default function AccordionPage({}: InferGetStaticPropsType<
             </div>
             <div className="u-spacing--responsive--bottom">
                 <div className="o-container--small">
-                    <h2 id="expanded">Expanding items initially</h2>
-                    <div className="o-wysiwyg">
-                        <p>
-                            You could use the <strong>initialExpanded</strong>{' '}
-                            prop of <strong>AccordionItem</strong> to expand
-                            items when accordion first mounts. In the following
-                            example, the first item is expanded on mount.
-                        </p>
-                    </div>
+                    <ShuffleTextInOut delay={0.3} target="#expanded" watch>
+                        <h2 id="expanded">Expanding items initially</h2>
+                    </ShuffleTextInOut>
+                    <TranslateInOut
+                        delay={0.4}
+                        y="100%"
+                        start="-100% bottom"
+                        end="top top"
+                        watch
+                    >
+                        <div className="o-wysiwyg">
+                            <p>
+                                You could use the{' '}
+                                <strong>initialExpanded</strong> prop of{' '}
+                                <strong>AccordionItem</strong> to expand items
+                                when accordion first mounts. In the following
+                                example, the first item is expanded on mount.
+                            </p>
+                        </div>
+                    </TranslateInOut>
                     <Accordion>
                         {items.map(({ header, content }, i) => (
                             <AccordionItem
@@ -110,13 +143,23 @@ export default function AccordionPage({}: InferGetStaticPropsType<
             </div>
             <div className="u-spacing--responsive--bottom">
                 <div className="o-container--small">
-                    <h2 id="nested">Nested accordion</h2>
-                    <div className="o-wysiwyg">
-                        <p>
-                            <strong>AccordionItem</strong> can have a nested
-                            accordion
-                        </p>
-                    </div>
+                    <ShuffleTextInOut delay={0.3} target="#nested" watch>
+                        <h2 id="nested">Nested accordion</h2>
+                    </ShuffleTextInOut>
+                    <TranslateInOut
+                        delay={0.4}
+                        y="100%"
+                        start="-100% bottom"
+                        end="top top"
+                        watch
+                    >
+                        <div className="o-wysiwyg">
+                            <p>
+                                <strong>AccordionItem</strong> can have a nested
+                                accordion
+                            </p>
+                        </div>
+                    </TranslateInOut>
                     <Accordion>
                         {items.map(({ header }, i) => (
                             <AccordionItem
