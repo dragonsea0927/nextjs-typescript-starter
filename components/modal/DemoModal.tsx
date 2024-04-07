@@ -3,8 +3,8 @@ import styles from '@/styles/modules/DemoModal.module.scss';
 import gsap from 'gsap';
 import { useState, useCallback, useMemo, useRef } from 'react';
 import useLockedScroll from '@/hooks/useLockedScroll';
-import Modal from './modal';
 import useIsomorphicLayoutEffect from '@/hooks/useIsomorphicLayoutEffect';
+import Modal from './Modal';
 
 export default function useDemoModal() {
     const [showDemoModal, setShowDemoModal] = useState(false);

@@ -21,14 +21,6 @@ export type Animation = {
 };
 
 /* Animations */
-export type Chars = {
-    children: ReactNode;
-    increment?: number;
-    target: string;
-    isLink?: boolean;
-    textAlign?: string;
-} & AnimationProperties;
-
 export type ClipPath = {
     children: ReactNode;
     fade?: boolean;
@@ -43,12 +35,6 @@ export type Fade = {
 
 export type ImplodeExplode = {
     children: ReactNode;
-    target: string;
-} & AnimationProperties;
-
-export type Lines = {
-    children: ReactNode;
-    increment?: number;
     target: string;
 } & AnimationProperties;
 
