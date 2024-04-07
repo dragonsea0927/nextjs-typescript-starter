@@ -25,7 +25,11 @@
                 }
 
                 span {
+                    display: block;
+
                     a {
+                        display: inline-block;
+
                         &.is-current-page {
                             color: var(--secondary);
                         }

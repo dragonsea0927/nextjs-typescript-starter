@@ -10,7 +10,7 @@ export default function Layout({ children, routes }: Layout) {
                 <Navigation routes={routes} />
                 <main>
                     {children}
-                    <Footer />
+                    <Footer routes={routes} />
                 </main>
             </TransitionLayout>
         </>

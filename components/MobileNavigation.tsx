@@ -1,10 +1,10 @@
 import { MobileNavigationProps } from '@/types/components/global';
 import styles from '@/styles/modules/MobileNavigation.module.scss';
 import gsap from 'gsap';
-import NavItem from './NavItem';
 import useNavigationContext from '@/context/navigationContext';
 import useIsomorphicLayoutEffect from '@/hooks/useIsomorphicLayoutEffect';
 import { useRef } from 'react';
+import NavItem from './NavItem';
 import classNames from 'classnames';
 
 export default function MobileNavigation({ routes }: MobileNavigationProps) {

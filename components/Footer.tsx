@@ -1,42 +1,24 @@
+import { FooterProps } from '@/types/components/global';
 import styles from '@/styles/modules/Footer.module.scss';
 import NavItem from './NavItem';
 import classNames from 'classnames';
 
-export default function Footer() {
+export default function Footer({ routes }: FooterProps) {
     return (
         <footer className={styles['c-footer']}>
             <div className="o-container">
                 <div className={styles['c-footer__row']}>
                     <div className={styles['c-footer__list']}>
                         <ul className="unstyled">
-                            <li>
-                                <NavItem
-                                    href="/gsap"
-                                    title="Gsap"
-                                    className={styles['is-current-page']}
-                                />
-                            </li>
-                            <li>
-                                <NavItem
-                                    href="/accordion"
-                                    title="Accordion"
-                                    className={styles['is-current-page']}
-                                />
-                            </li>
-                            <li>
-                                <NavItem
-                                    href="/form"
-                                    title="Form"
-                                    className={styles['is-current-page']}
-                                />
-                            </li>
-                            <li>
-                                <NavItem
-                                    href="/upload"
-                                    title="File upload form"
-                                    className={styles['is-current-page']}
-                                />
-                            </li>
+                            {routes.map(({ href, title }, i) => (
+                                <li key={i}>
+                                    <NavItem
+                                        href={href}
+                                        title={title}
+                                        className={styles['is-current-page']}
+                                    />
+                                </li>
+                            ))}
                         </ul>
                     </div>
                     <div

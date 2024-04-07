@@ -42,3 +42,8 @@ export type Layout = {
     children: ReactNode;
     routes: NavigationRoutes;
 };
+
+/* Footer */
+export type FooterProps = {
+    routes: NavigationRoutes;
+};
