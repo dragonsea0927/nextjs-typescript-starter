@@ -66,6 +66,21 @@ export default function App({ Component, pageProps }: AppProps) {
     const router = useRouter();
     const metaData = pageProps.metaData;
 
+    const routes = [
+        {
+            href: '/gsap',
+            title: 'GSAP',
+        },
+        {
+            href: '/accordion',
+            title: 'Accordion',
+        },
+        {
+            href: '/form',
+            title: 'Form',
+        },
+    ];
+
     /* Removes focus from next/link element after page change */
     useEffect(() => {
         document.activeElement instanceof HTMLElement &&
@@ -97,7 +112,7 @@ export default function App({ Component, pageProps }: AppProps) {
                                 }
                             `}
                         </style>
-                        <Layout>
+                        <Layout routes={routes}>
                             <Component {...pageProps} />
                         </Layout>
                     </NavigationContextProvider>

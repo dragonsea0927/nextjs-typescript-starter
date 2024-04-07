@@ -1,4 +1,4 @@
-import { TogglerProps } from '@/types/components/global';
+import { NavigationProps, TogglerProps } from '@/types/components/global';
 import styles from '@/styles/modules/Navigation.module.scss';
 import gsap from 'gsap';
 import Link from 'next/link';
@@ -11,21 +11,7 @@ import MobileNavigation from './MobileNavigation';
 import NavItem from './NavItem';
 import classNames from 'classnames';
 
-export default function Navigation() {
-    const routes = [
-        {
-            href: '/gsap',
-            title: 'GSAP',
-        },
-        {
-            href: '/accordion',
-            title: 'Accordion',
-        },
-        {
-            href: '/form',
-            title: 'Form',
-        },
-    ];
+export default function Navigation({ routes }: NavigationProps) {
     const { navigationRef, open, sticky, hidden, toggle } =
         useNavigationContext();
     const [headerRef, { height }] = useElementSize();
@@ -41,7 +27,7 @@ export default function Navigation() {
                 gsap.fromTo(
                     item,
                     {
-                        y: '15px',
+                        y: '100%',
                     },
                     {
                         opacity: 1,
@@ -86,7 +72,7 @@ export default function Navigation() {
                             </Link>
                         </div>
                         <Toggler open={open} toggle={toggle} />
-                        <MobileNavigation />
+                        <MobileNavigation routes={routes} />
                         <nav className={styles['c-navigation__nav']}>
                             <div
                                 className={styles['c-navigation__nav__primary']}

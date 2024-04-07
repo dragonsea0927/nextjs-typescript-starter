@@ -1,10 +1,46 @@
+import { MobileNavigationProps } from '@/types/components/global';
 import styles from '@/styles/modules/MobileNavigation.module.scss';
+import gsap from 'gsap';
 import NavItem from './NavItem';
-import classNames from 'classnames';
 import useNavigationContext from '@/context/navigationContext';
+import useIsomorphicLayoutEffect from '@/hooks/useIsomorphicLayoutEffect';
+import { useRef } from 'react';
+import classNames from 'classnames';
 
-export default function MobileNavigation() {
+export default function MobileNavigation({ routes }: MobileNavigationProps) {
     const { mobileNavRef, open } = useNavigationContext();
+    const navItemsRef = useRef<HTMLAnchorElement[] | null[]>([]);
+
+    useIsomorphicLayoutEffect(() => {
+        if (open) {
+            const ctx = gsap.context(() => {
+                /* Intro animation */
+                const increment = 0.2;
+                let initialDelay = 0.2;
+
+                navItemsRef.current.forEach((item) => {
+                    gsap.fromTo(
+                        item,
+                        {
+                            y: '100%',
+                        },
+                        {
+                            opacity: 1,
+                            y: 0,
+                            willChange: 'transform',
+                            ease: 'sine.out',
+                            delay: initialDelay,
+                            duration: 0.35,
+                        },
+                    );
+
+                    initialDelay += increment;
+                });
+            });
+
+            return () => ctx.revert();
+        }
+    }, [open]);
 
     return (
         <>
@@ -24,33 +60,24 @@ export default function MobileNavigation() {
                                     }
                                 >
                                     <ul>
-                                        <li>
-                                            <NavItem
-                                                href="/gsap"
-                                                title="GSAP"
-                                                className={
-                                                    styles['is-current-page']
-                                                }
-                                            />
-                                        </li>
-                                        <li>
-                                            <NavItem
-                                                href="/accordion"
-                                                title="Accordion"
-                                                className={
-                                                    styles['is-current-page']
-                                                }
-                                            />
-                                        </li>
-                                        <li>
-                                            <NavItem
-                                                href="/form"
-                                                title="Form"
-                                                className={
-                                                    styles['is-current-page']
-                                                }
-                                            />
-                                        </li>
+                                        {routes.map(({ href, title }, i) => (
+                                            <li key={i}>
+                                                <NavItem
+                                                    href={href}
+                                                    title={title}
+                                                    className={
+                                                        styles[
+                                                            'is-current-page'
+                                                        ]
+                                                    }
+                                                    ref={(el) => {
+                                                        navItemsRef.current[i] =
+                                                            el;
+                                                    }}
+                                                    style={{ opacity: 0 }}
+                                                />
+                                            </li>
+                                        ))}
                                     </ul>
                                 </div>
                             </div>

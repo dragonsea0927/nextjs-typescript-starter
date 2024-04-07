@@ -1,13 +1,13 @@
-import { ReactNode } from 'react';
+import { Layout } from '@/types/components/global';
 import TransitionLayout from './TransitionLayout';
 import Navigation from './Navigation';
 import Footer from './Footer';
 
-export default function Layout({ children }: { children: ReactNode }) {
+export default function Layout({ children, routes }: Layout) {
     return (
         <>
             <TransitionLayout>
-                <Navigation />
+                <Navigation routes={routes} />
                 <main>
                     {children}
                     <Footer />
