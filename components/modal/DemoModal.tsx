@@ -8,6 +8,7 @@ import useIsomorphicLayoutEffect from '@/hooks/useIsomorphicLayoutEffect';
 
 export default function useDemoModal() {
     const [showDemoModal, setShowDemoModal] = useState(false);
+    // eslint-disable-next-line @typescript-eslint/no-unused-vars
     const [locked, setLocked] = useLockedScroll(false);
 
     const setModal = useCallback(

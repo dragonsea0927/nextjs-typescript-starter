@@ -6,11 +6,13 @@ import useWindowLocation from '@/hooks/useWindowLocation';
 import useWindowSize from '@/hooks/useWindowSize';
 import BasicHeader from '@/components/BasicHeader';
 import Button from '@/components/Button';
+import useDemoModal from '@/components/modal/DemoModal';
 import RotateInOut3D from '@/components/gsap/RotateInOut3D';
 import ShuffleTextInOut from '@/components/gsap/ShuffleTextInOut';
 import TranslateInOut from '@/components/gsap/TranslateInOut';
 
 export default function Home() {
+    const { DemoModal, setModal } = useDemoModal();
     const { windowSize, isMobile, isDesktop } = useWindowSize();
     const { scrollY, directionY } = useScrollbar();
     const [sectionRef, size] = useElementSize();
@@ -49,6 +51,25 @@ export default function Home() {
                         </TranslateInOut>
                     </div>
                     <div className="c-flexSection__row">
+                        <div className="c-flexSection__item">
+                            <DemoModal
+                                title="Demo modal"
+                                content="Beautiful, reusable modal animated using GSAP."
+                            />
+                            <TranslateInOut
+                                delay={0.25}
+                                y="100%"
+                                start="-100% bottom"
+                                end="top top"
+                                watch
+                            >
+                                <Button
+                                    label="Modal"
+                                    onClick={() => setModal(true)}
+                                    className="c-btn"
+                                />
+                            </TranslateInOut>
+                        </div>
                         <div className="c-flexSection__item">
                             <TranslateInOut
                                 delay={0.45}
