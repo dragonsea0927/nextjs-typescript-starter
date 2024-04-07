@@ -27,6 +27,7 @@
         "react-google-recaptcha-v3": "^1.10.1",
         "react-hook-form": "^7.43.9",
         "react-toastify": "^9.1.2",
+        "react-toggle-dark-mode": "^1.1.1",
         "typescript": "5.0.4",
         "yup": "^1.1.1"
     },

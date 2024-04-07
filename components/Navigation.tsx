@@ -4,17 +4,22 @@ import gsap from 'gsap';
 import Link from 'next/link';
 import useNavigationContext from '@/context/navigationContext';
 import useElementSize from '@/hooks/useElementSize';
+import useIsMounted from '@/hooks/useIsMounted';
+import { useTheme } from 'next-themes';
 import useIsomorphicLayoutEffect from '@/hooks/useIsomorphicLayoutEffect';
 import { useRef } from 'react';
 import Logo from './icons/Logo';
 import MobileNavigation from './MobileNavigation';
 import NavItem from './NavItem';
+import { DarkModeSwitch } from 'react-toggle-dark-mode';
 import classNames from 'classnames';
 
 export default function Navigation({ routes }: NavigationProps) {
     const { navigationRef, open, sticky, hidden, toggle } =
         useNavigationContext();
     const [headerRef, { height }] = useElementSize();
+    const isMounted = useIsMounted();
+    const { resolvedTheme, setTheme } = useTheme();
     const navItemsRef = useRef<HTMLAnchorElement[] | null[]>([]);
 
     useIsomorphicLayoutEffect(() => {
@@ -107,6 +112,24 @@ export default function Navigation({ routes }: NavigationProps) {
                                 </div>
                             </div>
                         </nav>
+                        <div className={styles['c-navigation__switch']}>
+                            {isMounted() && (
+                                <DarkModeSwitch
+                                    checked={
+                                        resolvedTheme === 'dark' ? true : false
+                                    }
+                                    aria-label="Theme toggler"
+                                    onChange={() =>
+                                        setTheme(
+                                            resolvedTheme === 'dark'
+                                                ? 'light'
+                                                : 'dark',
+                                        )
+                                    }
+                                    size={35}
+                                />
+                            )}
+                        </div>
                     </div>
                 </div>
             </header>
@@ -121,7 +144,7 @@ function Toggler({ open, toggle }: TogglerProps) {
                 [styles['is-nav-active']]: open,
             })}
             type="button"
-            aria-label="Toggle menu"
+            aria-label="Menu toggler"
             onClick={toggle}
         >
             <div className={styles['m-toggler__lines']}>
