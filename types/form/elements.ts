@@ -9,6 +9,7 @@ import {
     UseControllerReturn,
     UseFormRegisterReturn,
 } from 'react-hook-form';
+import { UploadFormData } from '.';
 
 /* Elements */
 export interface Input extends InputHTMLAttributes<HTMLInputElement> {
@@ -27,9 +28,10 @@ export interface FileInput extends InputHTMLAttributes<HTMLInputElement> {
     id: string;
     className: string;
     wrapperClassName?: string;
-    register: UseFormRegisterReturn;
     errors: FieldError | undefined;
-    controller: UseControllerReturn;
+    controller:
+        | UseControllerReturn<UploadFormData, 'resume'>
+        | UseControllerReturn<UploadFormData, 'coverletter'>;
 }
 
 export interface Checkbox extends InputHTMLAttributes<HTMLInputElement> {

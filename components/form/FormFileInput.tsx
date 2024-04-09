@@ -15,16 +15,14 @@ export default function FormFileInput({
     controller,
 }: FileInput) {
     const [labelValue, setLabelValue] = useState(label);
-    const [file, setFile] = useState<File | null>(null);
 
     /* Sets input and label value */
     const updateOnChange = (e: ChangeEvent<HTMLInputElement>) => {
         if (e.target.files) {
-            setFile(e.target.files[0] ?? null);
             controller?.field.onChange(
                 (e.target.files.length && e.target.files) || '',
             );
-            setLabelValue(file?.name ?? label);
+            setLabelValue(e.target.files[0]?.name ?? label);
         }
     };
 

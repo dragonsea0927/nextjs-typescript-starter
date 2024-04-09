@@ -7,6 +7,7 @@ import { useTheme } from 'next-themes';
 import { useGoogleReCaptcha } from 'react-google-recaptcha-v3';
 import { formSchema } from '@/schemas/form';
 import { yupResolver } from '@hookform/resolvers/yup';
+import useUnsavedChanges from '@/hooks/useUnsavedChanges';
 import classNames from 'classnames';
 import FormInput from './FormInput';
 import FormTextarea from './FormTextarea';
@@ -21,8 +22,8 @@ import ScaleInOut from '../gsap/ScaleInOut';
 import { Theme, toast, ToastContainer, Zoom } from 'react-toastify';
 
 const labels: Labels = {
-    firstname: 'Firstname',
-    lastname: 'Lastname',
+    firstname: 'First name',
+    lastname: 'Last name',
     email: 'Email',
     subject: 'Subject',
     choices: 'Choices',
@@ -51,7 +52,7 @@ export default function Form() {
         handleSubmit,
         reset,
         setError,
-        formState: { isSubmitting, errors },
+        formState: { isSubmitting, errors, isDirty },
     } = useForm<FormData>({
         defaultValues: {
             firstname: '',
@@ -67,6 +68,9 @@ export default function Form() {
     const isMounted = useIsMounted();
     const { resolvedTheme } = useTheme();
     const { executeRecaptcha } = useGoogleReCaptcha();
+
+    /* Prompt the user if they try and leave with unsaved changes */
+    useUnsavedChanges(isDirty);
 
     const submitForm = async (data: FormData, recaptchaToken: string) => {
         const toastConfig = {

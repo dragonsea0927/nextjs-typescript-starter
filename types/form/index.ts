@@ -13,8 +13,8 @@ export type UploadFormData = {
     firstname?: string;
     lastname?: string;
     email?: string;
-    // resume?: File;
-    // coverletter?: File;
+    resume?: File | string;
+    coverletter?: File | string;
     message?: string;
 };
 

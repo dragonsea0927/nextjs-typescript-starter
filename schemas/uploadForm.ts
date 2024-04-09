@@ -1,6 +1,5 @@
 import { UploadFormData } from '@/types/form';
-// import { object, string, mixed, addMethod, ObjectSchema } from 'yup';
-import { object, string, addMethod, ObjectSchema } from 'yup';
+import { object, string, mixed, addMethod, ObjectSchema } from 'yup';
 
 const getFormSchema = () => {
     /* Override the email method, if email isn't required we need to add excludeEmptyString: true */
@@ -17,6 +16,12 @@ const getFormSchema = () => {
         email: string()
             .required('This field is required')
             .email('Invalid email address'),
+        resume: mixed<File>().test(
+            'required',
+            'This field is required',
+            (files) => (files ? true : false),
+        ),
+        coverletter: mixed<File>(),
         message: string().required('This field is required'),
     });
 
