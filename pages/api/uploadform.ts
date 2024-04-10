@@ -182,8 +182,6 @@ export default async function handler(
                 .json({ data: null, errors: validationErrors });
         }
 
-        console.log(err);
-
         /* Global server error */
         return res
             .status(500)
