@@ -4,7 +4,7 @@ export type FormData = {
     lastname?: string;
     email?: string;
     subject?: string;
-    choices?: (string | undefined)[] | undefined;
+    choices?: (string | undefined)[];
     question?: string;
     message?: string;
 };
@@ -13,8 +13,8 @@ export type UploadFormData = {
     firstname?: string;
     lastname?: string;
     email?: string;
-    resume?: File | string;
-    coverletter?: File | string;
+    resume?: FileList | string;
+    coverletter?: FileList | string;
     message?: string;
 };
 

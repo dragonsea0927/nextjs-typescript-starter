@@ -22,7 +22,7 @@ export default function FormFileInput({
             controller.field.onChange(
                 (e.target.files.length && e.target.files) || '',
             );
-            setLabelValue(e.target.files[0].name ?? label);
+            setLabelValue(e.target.files[0]?.name ?? label);
         }
     };
 
