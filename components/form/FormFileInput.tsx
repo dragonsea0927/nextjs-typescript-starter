@@ -29,7 +29,8 @@ export default function FormFileInput({
     /* Reset label after successful submit */
     useEffect(() => {
         if (controller.formState.isSubmitSuccessful) setLabelValue(label);
-    }, [controller.formState.isSubmitSuccessful, label]);
+        // eslint-disable-next-line react-hooks/exhaustive-deps
+    }, [controller.formState.isSubmitSuccessful]);
 
     return (
         <div className={wrapperClassName}>
