@@ -1,5 +1,5 @@
 import { NextApiRequest, NextApiResponse } from 'next';
-import formidable, { Fields, Files } from 'formidable';
+import formidable, { Fields, File, Files } from 'formidable';
 import Email from '@/utils/email';
 import { Writable } from 'stream';
 import { getEmailTemplateFile } from '@/utils/template';
@@ -108,12 +108,21 @@ export default async function handler(
             {},
         );
 
+        /* Format files */
+        const formatFiles = Object.entries(files).reduce(
+            (obj: { [key: string]: File | undefined }, [key, value]) => {
+                obj[key] = value?.[0];
+                return obj;
+            },
+            {},
+        );
+
         /* Destructures fields */
         const { recaptchaToken, labels, ...formFields } = formatFields;
 
         /* Validation */
         await uploadSchema.validate(
-            { ...formFields, ...files },
+            { ...formFields, ...formatFiles },
             { abortEarly: false },
         );
 
@@ -172,6 +181,9 @@ export default async function handler(
                 .status(400)
                 .json({ data: null, errors: validationErrors });
         }
+
+        console.log(err);
+
         /* Global server error */
         return res
             .status(500)

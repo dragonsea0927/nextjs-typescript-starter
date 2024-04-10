@@ -19,17 +19,17 @@ export default function FormFileInput({
     /* Sets input and label value */
     const updateOnChange = (e: ChangeEvent<HTMLInputElement>) => {
         if (e.target.files) {
-            controller?.field.onChange(
+            controller.field.onChange(
                 (e.target.files.length && e.target.files) || '',
             );
-            setLabelValue(e.target.files[0]?.name ?? label);
+            setLabelValue(e.target.files[0].name ?? label);
         }
     };
 
     /* Reset label after successful submit */
     useEffect(() => {
-        if (controller?.formState.isSubmitSuccessful) setLabelValue(label);
-    }, [controller?.formState.isSubmitSuccessful, label]);
+        if (controller.formState.isSubmitSuccessful) setLabelValue(label);
+    }, [controller.formState.isSubmitSuccessful, label]);
 
     return (
         <div className={wrapperClassName}>
@@ -45,10 +45,10 @@ export default function FormFileInput({
                 <input
                     type="file"
                     id={id}
-                    name={controller?.field.name}
+                    name={controller.field.name}
                     required={required}
-                    ref={controller?.field.ref}
-                    onBlur={controller?.field.onBlur}
+                    ref={controller.field.ref}
+                    onBlur={controller.field.onBlur}
                     onChange={updateOnChange}
                 />
                 <FileUpload />
@@ -61,7 +61,7 @@ export default function FormFileInput({
                 <span className={styles['c-formElement--focusLine']} />
             </div>
             {errors?.message && (
-                <label htmlFor={htmlFor}>{errors?.message}</label>
+                <label htmlFor={htmlFor}>{errors.message}</label>
             )}
         </div>
     );
