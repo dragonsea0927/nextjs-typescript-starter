@@ -34,7 +34,7 @@ export default function FormRadioList({
                 ))}
             </div>
             {errors?.message && (
-                <label htmlFor={htmlFor}>{errors?.message}</label>
+                <label htmlFor={htmlFor}>{errors.message}</label>
             )}
         </div>
     );
