@@ -1,15 +1,12 @@
+import { TransitionLayout } from '@/types/components/global';
 import useTransitionContext from '@/context/transitionContext';
-import { ReactNode, useState } from 'react';
+import { useState } from 'react';
 import { useRouter } from 'next/router';
 import useIsomorphicLayoutEffect from '@/hooks/useIsomorphicLayoutEffect';
 import ScrollTrigger from 'gsap/dist/ScrollTrigger';
 import useNavigationContext from '@/context/navigationContext';
 
-export default function TransitionLayout({
-    children,
-}: {
-    children: ReactNode;
-}) {
+export default function TransitionLayout({ children }: TransitionLayout) {
     const router = useRouter();
     const [displayChildren, setDisplayChildren] = useState(children);
     const { timeline, resetTimeline } = useTransitionContext();

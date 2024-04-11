@@ -43,6 +43,10 @@ export type Layout = {
     routes: NavigationRoutes;
 };
 
+export type TransitionLayout = {
+    children: ReactNode;
+};
+
 /* Footer */
 export type FooterProps = {
     routes: NavigationRoutes;
