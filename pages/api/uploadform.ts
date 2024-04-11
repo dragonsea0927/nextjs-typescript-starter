@@ -99,7 +99,7 @@ export default async function handler(
             fileWriteStreamHandler: (file) => fileConsumer(file, filesData),
         });
 
-        /* Format fields */
+        /* Formats fields */
         const formatFields = Object.entries(fields).reduce(
             (obj: { [key: string]: string }, [key, value]) => {
                 obj[key] = value?.[0] ?? '';
@@ -108,7 +108,7 @@ export default async function handler(
             {},
         );
 
-        /* Format files */
+        /* Formats files */
         const formatFiles = Object.entries(files).reduce(
             (obj: { [key: string]: File | undefined }, [key, value]) => {
                 obj[key] = value?.[0];
