@@ -16,8 +16,8 @@ interface TransitionContextType {
 
 const TransitionContext = createContext<TransitionContextType>({
     timeline: null,
-    setTimeline: () => null,
-    resetTimeline: () => null,
+    setTimeline: () => {},
+    resetTimeline: () => {},
 });
 
 export function TransitionContextProvider({
