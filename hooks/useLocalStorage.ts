@@ -73,7 +73,7 @@ export default function useLocalStorage<T>(
      * Removes the value from localStorage
      */
     const removeValue = () => {
-        // Prevent build error "window is undefined" but keeps working
+        /* Prevent build error "window is undefined" but keeps working */
         if (IS_SERVER) {
             console.warn(
                 `Tried removing localStorage key "${key}" even though environment is not a client`,
