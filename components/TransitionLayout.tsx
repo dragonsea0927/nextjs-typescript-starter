@@ -18,6 +18,7 @@ export default function TransitionLayout({ children }: TransitionLayout) {
                 /* There are no outro animations, so immediately transition */
                 setDisplayChildren(children);
                 setCurrentRoute(router.asPath);
+                window.scrollTo(0, 0);
                 ScrollTrigger.refresh(true);
                 return;
             }
@@ -27,6 +28,7 @@ export default function TransitionLayout({ children }: TransitionLayout) {
                 resetTimeline();
                 setDisplayChildren(children);
                 setCurrentRoute(router.asPath);
+                window.scrollTo(0, 0);
                 ScrollTrigger.refresh(true);
             });
         } else {
