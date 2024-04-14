@@ -21,7 +21,7 @@
         "eslint": "8.39.0",
         "eslint-config-next": "^14.1.4",
         "formidable": "^3.5.1",
-        "gsap": "npm:@gsap/business",
+        "gsap": "npm:gsap-trial",
         "next": "^14.1.4",
         "next-themes": "^0.2.1",
         "react": "^18.2.0",
