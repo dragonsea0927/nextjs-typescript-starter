@@ -1,5 +1,5 @@
-<a href="https://nextjs-gsap-starter.vercel.app">
-  <img alt="Next.js TypeScript starter" src="https://nextjs-gsap-starter.vercel.app/static/og-image.png">
+<a href="https://nextjs-typescript-gsap-starter.vercel.app">
+  <img alt="Next.js TypeScript starter" src="https://nextjs-typescript-gsap-starter.vercel.app/static/og-image.png">
 </a>
 
 <h1 align="center">Next.js TypeScript starter</h1>
