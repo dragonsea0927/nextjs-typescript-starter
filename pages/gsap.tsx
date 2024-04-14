@@ -32,27 +32,27 @@ export default function gsap({}: InferGetStaticPropsType<
                                 A great place to get started with GSAP and React
                                 is to read{' '}
                                 <a
-                                    href="https://greensock.com/react"
+                                    href="https://gsap.com/resources/React"
                                     target="_blank"
                                     rel="noopener noreferrer"
                                 >
-                                    GSAP X React
+                                    GSAP with React
                                 </a>
                                 ,{' '}
                                 <a
-                                    href="https://greensock.com/react-basics"
+                                    href="https://gsap.com/docs/v3/GSAP/gsap.context()/"
                                     target="_blank"
                                     rel="noopener noreferrer"
                                 >
-                                    Getting Started with GSAP + React
+                                    GSAP method gsap.context()
                                 </a>{' '}
                                 and{' '}
                                 <a
-                                    href="https://greensock.com/react-advanced"
+                                    href="https://gsap.com/resources/react-advanced"
                                     target="_blank"
                                     rel="noopener noreferrer"
                                 >
-                                    GSAP + React, Advanced Animation Techniques
+                                    GSAP React Advanced Animation Techniques
                                 </a>
                                 . Wrap your component with an animation such as{' '}
                                 <strong>FadeInOut</strong>,{' '}
