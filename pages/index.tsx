@@ -31,7 +31,7 @@ export default function Home() {
     return (
         <>
             <BasicHeader
-                title="Next.js typescript starter"
+                title="Next.js TypeScript starter"
                 content="A collection of reusable components, hooks, and utilities to build amazing projects with complex animations and page transitions using GSAP."
                 button={{
                     label: 'Powered by Next.js',

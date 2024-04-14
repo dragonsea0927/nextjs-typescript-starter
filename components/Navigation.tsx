@@ -72,7 +72,7 @@ export default function Navigation({ routes }: NavigationProps) {
                 <div className="o-container">
                     <div className={styles['c-navigation__row']}>
                         <div className={styles['c-navigation__logo']}>
-                            <Link href="/" title="Next.js starter">
+                            <Link href="/" title="Next.js TypeScript starter">
                                 <Logo />
                             </Link>
                         </div>

@@ -5,9 +5,9 @@ import useWindowLocation from '@/hooks/useWindowLocation';
 export default function MetaData({ ...customMeta }: MetaDataProps) {
     const { currentURL } = useWindowLocation();
     const meta: MetaDataProps = {
-        title: 'Next.js typescript starter',
+        title: 'Next.js TypeScript starter',
         description:
-            'A Next.js typescript starter that includes a collection of reusable components, hooks, and utilities to build amazing projects with complex animations and page transitions using GSAP.',
+            'A Next.js TypeScript starter that includes a collection of reusable components, hooks, and utilities to build amazing projects with complex animations and page transitions using GSAP.',
         image: `${process.env.NEXT_PUBLIC_BASE_URL}/static/og-image.png`,
         type: 'website',
         ...customMeta,

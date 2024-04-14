@@ -28,7 +28,7 @@ export default function Footer({ routes }: FooterProps) {
                         )}
                     >
                         <p>
-                            &copy; {new Date().getFullYear()} Next.js typescript
+                            &copy; {new Date().getFullYear()} Next.js TypeScript
                             starter. All rights reserved.
                         </p>
                     </div>
